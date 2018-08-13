@@ -54,3 +54,26 @@ for (var _index = 0; _index < buttons.length; _index++) {
 
     _loop(_index);
 }
+
+// function f1() {
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             resolve(10);
+//         }, 1000);
+//     });
+// }
+
+// function f2() {
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             resolve(20);
+//         }, 2000);
+//     });
+// }
+// (async () => {
+
+//     let x = await f1();
+//     let y = await f2();
+//     console.log(x, y);
+
+// })();

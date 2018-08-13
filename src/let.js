@@ -45,3 +45,29 @@ for (let index = 0; index < buttons.length; index++) {
         console.log(index); 
     }
 }
+
+// function f1() {
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             resolve(10);
+//         }, 1000);
+//     });
+// }
+
+// function f2() {
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             resolve(20);
+//         }, 2000);
+//     });
+// }
+// (async () => {
+
+//     let x = await f1();
+//     let y = await f2();
+//     console.log(x, y);
+
+// })();
+
+
+
