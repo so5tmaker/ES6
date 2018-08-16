@@ -25,4 +25,19 @@ function sum() {
     console.log(sum);
 }
 
+function sum() {
+    for (var _len = arguments.length, values = Array(_len), _key = 0; _key < _len; _key++) {
+        values[_key] = arguments[_key];
+    }
+
+    console.log(values instanceof Array);
+
+    var sum = 0;
+
+    values.forEach(function (value) {
+        sum += value;
+    });
+    console.log(sum);
+}
+
 sum(5, 7, 2, 10);
