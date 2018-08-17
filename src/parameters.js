@@ -32,8 +32,8 @@ function sum(...values) {
 }
 
 function sum(...values) {
-    console.log(values.reduce(function(prevValue,currentValue){
-        return prevValue+currentValue;
+    console.log(values.reduce(function (prevValue, currentValue) {
+        return prevValue + currentValue;
     }));
 }
 

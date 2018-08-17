@@ -40,4 +40,14 @@ function sum() {
     console.log(sum);
 }
 
+function sum() {
+    for (var _len2 = arguments.length, values = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        values[_key2] = arguments[_key2];
+    }
+
+    console.log(values.reduce(function (prevValue, currentValue) {
+        return prevValue + currentValue;
+    }));
+}
+
 sum(5, 7, 2, 10);
