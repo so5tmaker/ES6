@@ -31,4 +31,10 @@ function sum(...values) {
     console.log(sum);
 }
 
+function sum(...values) {
+    console.log(values.reduce(function(prevValue,currentValue){
+        return prevValue+currentValue;
+    }));
+}
+
 sum(5, 7, 2, 10);
