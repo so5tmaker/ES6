@@ -30,3 +30,6 @@ showMsg('John', 'Admin', ()=>{
 });
 
 showMsg('John', 'Admin');
+
+const required = (val) => val && val.length;
+const maxLength = (len) => (val) => !(val) || (val.length <= len);

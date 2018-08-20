@@ -32,3 +32,12 @@ showMsg('John', 'Admin', function () {
 });
 
 showMsg('John', 'Admin');
+
+var required = function required(val) {
+    return val && val.length;
+};
+var maxLength = function maxLength(len) {
+    return function (val) {
+        return !val || val.length <= len;
+    };
+};
