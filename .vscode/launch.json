@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Запустить программу",
-            "program": "${workspaceFolder}/index.js"
+            "program": "${workspaceFolder}/src/setinterval.js"
         }
     ]
 }
