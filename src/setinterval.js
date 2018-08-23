@@ -21,7 +21,7 @@
     };
 
     let timer = setInterval(() => {
-        startTimer(2);
+        startTimer(1);
     }, delay);
 
 })();

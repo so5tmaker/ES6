@@ -21,6 +21,6 @@
     };
 
     var timer = setInterval(function () {
-        startTimer(2);
+        startTimer(1);
     }, delay);
 })();
