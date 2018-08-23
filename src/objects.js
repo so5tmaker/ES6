@@ -1,10 +1,8 @@
-'use strict';
-
-var firstName = 'Bill',
+let firstName = 'Bill',
     lastName = 'Gates',
     email = 'billgates@microsoft.com';
 
-var person = {
+let person = {
     firstName: firstName,
     lastName: lastName,
     email: email,
@@ -40,7 +38,7 @@ function createCar(property, value) {
         [property]: value,
         ['_' + property]: value,
         [property.toUpperCase()]: value,
-        ['get' + property](){
+        ['get' + property]() {
             return this[property]
         }
     }
