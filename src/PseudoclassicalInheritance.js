@@ -1,22 +1,19 @@
 class Cat {
-    constuctor(catName) {
-        this.name = catName;
+    constructor(name) {
+        this.name = name;
     }
-
     getName() {
         return this.name;
     }
 }
 
 class BobCat extends Cat {
-
-    constructor(catName){
-        super(catName);
+    constructor(name){
+        super(name);
 
         this.weigth = 30;
         this.color = 'orange';
     }
-
 }
 
 var david = new BobCat('David');

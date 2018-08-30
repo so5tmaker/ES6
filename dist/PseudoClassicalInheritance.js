@@ -9,16 +9,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Cat = function () {
-    function Cat() {
+    function Cat(name) {
         _classCallCheck(this, Cat);
+
+        this.name = name;
     }
 
     _createClass(Cat, [{
-        key: 'constuctor',
-        value: function constuctor(catName) {
-            this.name = catName;
-        }
-    }, {
         key: 'getName',
         value: function getName() {
             return this.name;
@@ -31,10 +28,10 @@ var Cat = function () {
 var BobCat = function (_Cat) {
     _inherits(BobCat, _Cat);
 
-    function BobCat(catName) {
+    function BobCat(name) {
         _classCallCheck(this, BobCat);
 
-        var _this = _possibleConstructorReturn(this, (BobCat.__proto__ || Object.getPrototypeOf(BobCat)).call(this, catName));
+        var _this = _possibleConstructorReturn(this, (BobCat.__proto__ || Object.getPrototypeOf(BobCat)).call(this, name));
 
         _this.weigth = 30;
         _this.color = 'orange';
