@@ -6,29 +6,31 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Task = function Task() {
+var Task = function Task(title) {
     _classCallCheck(this, Task);
 
-    console.log('Tasks creation');
+    this.title = title;
+    this.done = false;
+    console.log('The task creation');
 };
 
 var SubTask = function (_Task) {
     _inherits(SubTask, _Task);
 
-    function SubTask() {
+    function SubTask(title) {
         _classCallCheck(this, SubTask);
 
-        return _possibleConstructorReturn(this, (SubTask.__proto__ || Object.getPrototypeOf(SubTask)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (SubTask.__proto__ || Object.getPrototypeOf(SubTask)).call(this, title));
+
+        console.log('The subtask creation');
+        return _this;
     }
 
     return SubTask;
 }(Task);
 
-var task = new Task();
-var subtask = new SubTask();
+var task = new Task('Learn Java Script');
+var subtask = new SubTask('Learn ES6');
 
 console.log(task);
 console.log(subtask);
-
-console.log(subtask instanceof SubTask);
-console.log(subtask instanceof Task);
