@@ -36,15 +36,15 @@
 // }
 
 //6 -- 'let' declares a local variable 'index'
-var buttons = document.querySelectorAll('button');
-var index;
-for (let index = 0; index < buttons.length; index++) {
-    var button = buttons[index];
-    button.innerText = index;
-    button.onclick = function(e){
-        console.log(index); 
-    }
-}
+// var buttons = document.querySelectorAll('button');
+// var index;
+// for (let index = 0; index < buttons.length; index++) {
+//     var button = buttons[index];
+//     button.innerText = index;
+//     button.onclick = function(e){
+//         console.log(index); 
+//     }
+// }
 
 // function f1() {
 //     return new Promise(resolve => {
@@ -68,6 +68,4 @@ for (let index = 0; index < buttons.length; index++) {
 //     console.log(x, y);
 
 // })();
-
-
 

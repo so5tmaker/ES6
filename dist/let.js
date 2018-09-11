@@ -1,4 +1,3 @@
-'use strict';
 
 // 1 -- ReferenceError: version is not defined, so 'let' declares variable 
 // 'version' only whithin the if clause scope
@@ -37,23 +36,15 @@
 // }
 
 //6 -- 'let' declares a local variable 'index'
-var buttons = document.querySelectorAll('button');
-var index;
-
-var _loop = function _loop(_index) {
-    button = buttons[_index];
-
-    button.innerText = _index;
-    button.onclick = function (e) {
-        console.log(_index);
-    };
-};
-
-for (var _index = 0; _index < buttons.length; _index++) {
-    var button;
-
-    _loop(_index);
-}
+// var buttons = document.querySelectorAll('button');
+// var index;
+// for (let index = 0; index < buttons.length; index++) {
+//     var button = buttons[index];
+//     button.innerText = index;
+//     button.onclick = function(e){
+//         console.log(index); 
+//     }
+// }
 
 // function f1() {
 //     return new Promise(resolve => {
@@ -77,3 +68,4 @@ for (var _index = 0; _index < buttons.length; _index++) {
 //     console.log(x, y);
 
 // })();
+"use strict";
