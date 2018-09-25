@@ -10,16 +10,16 @@ const initialState = {
     secondName: 'Petrov'
 };
 
-function reducer(state, action) {
-    switch (action.type) {
-        case 'CHANGE_NAME':
-            return { ...state, name: action.payload }
-        case 'CHANGE_SECOND_NAME':
-            return {...state, secondName: action.payload}
-        default:
-            return [...state, action.payload]
-    }
-};
+// function reducer(state, action) {
+//     switch (action.type) {
+//         case 'CHANGE_NAME':
+//             return { ...state, name: action.payload }
+//         case 'CHANGE_SECOND_NAME':
+//             return {...state, secondName: action.payload}
+//         default:
+//             return [...state, action.payload]
+//     }
+// };
 
 const store = createStore(reducer, initialState);
 

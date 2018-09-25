@@ -2,26 +2,30 @@
 
 var _redux = require('redux');
 
-//const createStore = require('redux');
-
 // initialState -> store
 // view -> action -> reducer(state, action) -> newState
 //  reducer() - pure function - the same parameters, 
 // actions and returns (state) -- (dispatcher - flux)
 
-initialState = {
+var initialState = {
     name: 'Paul',
     secondName: 'Petrov'
 };
 
-function reducer() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-    var action = arguments[1];
+// function reducer(state, action) {
+//     switch (action.type) {
+//         case 'CHANGE_NAME':
+//             return { ...state, name: action.payload }
+//         case 'CHANGE_SECOND_NAME':
+//             return {...state, secondName: action.payload}
+//         default:
+//             return [...state, action.payload]
+//     }
+// };
 
-    console.log(state);
-};
+var store = (0, _redux.createStore)(reducer, initialState);
 
-var store = (0, _redux.createStore)();
+console.log(store.getState());
 
 var changeName = {
     type: 'CHANGE_NAME',
@@ -34,3 +38,6 @@ var changeSecondName = {
 };
 
 store.dispatch(changeName);
+console.log(store.getState());
+store.dispatch(changeSecondName);
+console.log(store.getState());
