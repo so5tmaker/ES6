@@ -3,9 +3,9 @@
 
 class Task {
     constructor(title = Task.getDefaultTitle()) {
-        this.title = title;
+        this.title = title; // properties are defined only in a constructor
         this.done = false;
-        Task.count += 1;
+        Task.count += 1; // static property
         console.log('The task is creating...');
     }
     complete() {
@@ -20,6 +20,9 @@ class Task {
 Task.count = 0;
 
 let task = new Task('To clean a room');
+console.log(typeof task);
+console.log(task instanceof Task);
+
 let task2 = new Task('To buy food');
 let task3 = new Task();
 
