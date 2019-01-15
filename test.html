@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+    <button id="elem" onclick="mouseClick();">Автоклик</button>
+
+    <script>
+        function mouseClick() {
+            const url = 'http://www.autorem.kz/audit.xlsx';
+            const link = document.createElement('a');
+            link.href = url;
+            if (navigator.msSaveBlob) { // IE11 block
+                window.open(url, '_blank');
+            } else { // non-IE11 block
+                link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+            }
+        }
+    </script>
+
+</body>
+
+</html>
