@@ -38,4 +38,4 @@ applyForVisa({})
     .then(getVisa)
     .then(bookHotel)
     .then(buyTickets)
-    .catch(error => console.error(error));
+    .catch(error => console.error(error + 1));
