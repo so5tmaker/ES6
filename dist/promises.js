@@ -39,5 +39,5 @@ function buyTickets(booking) {
 }
 
 applyForVisa({}).then(getVisa).then(bookHotel).then(buyTickets).catch(function (error) {
-    return console.error(error);
+    return console.error(error + 1);
 });

@@ -2,8 +2,16 @@
 
 // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
 
-var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function (a, b) {
-    return a.concat(b);
-});
+// Array.prototype.reduce()
+// Метод reduce() применяет функцию reducer к каждому элементу массива (слева-направо), возвращая одно результирующее значение.
 
-console.log(flattened);
+var array1 = [1, 2, 3, 4];
+
+// 0 + 1 + 2 + 3 + 4
+var initialValue = 0;
+var sumWithInitial = array1.reduce(function (previousValue, currentValue) {
+  return previousValue + currentValue;
+}, initialValue);
+
+console.log(sumWithInitial);
+// expected output: 10

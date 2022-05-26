@@ -1,7 +1,7 @@
 {
-  "name": "ES6",
+  "name": "es6",
   "version": "1.0.0",
-  "description": "",
+  "description": "ES6 Basics",
   "main": "index.js",
   "scripts": {
     "build": "babel src -d dist --presets es2015",
@@ -14,11 +14,20 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
-    "eslint": "^5.15.1",
+    "eslint": "^8.11.0",
     "eslint-plugin-react": "^7.12.4"
   },
   "dependencies": {
     "redux": "^3.7.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/so5tmaker/ES6.git"
+  },
+  "bugs": {
+    "url": "https://github.com/so5tmaker/ES6/issues"
+  },
+  "homepage": "https://github.com/so5tmaker/ES6#readme"
 }
