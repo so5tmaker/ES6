@@ -2,15 +2,15 @@
 
 let browsers = ['Chrome', 'Firefox', 'Edge', 'Safari', 'Opera'];
 
-for(browser in browsers){
+for (let browser in browsers) {
     console.log(browser);
 }
 
-for(let index in browsers){
+for (let index in browsers) {
     console.log(browsers[index]);
 }
 
-for(browser of browsers){
+for (let browser of browsers) {
     console.log(browser);
 }
 
