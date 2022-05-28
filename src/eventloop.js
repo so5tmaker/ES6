@@ -35,13 +35,7 @@
 // console.log('D');
 
 
-const obj0 = { id: "1" };
-const obj1 = {
-    prop1: obj0,
-};
-const obj2 = Object.assign({}, obj1);
-console.log(obj1.prop1);
-console.log(obj2.prop1);
-
-
-
+var a1 = "wrong";
+function a() { return "1st"; };
+function a(val) { this.a1 = "right"; return "2nd"; }
+console.log(new a());
