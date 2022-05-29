@@ -34,8 +34,28 @@
 // });
 // console.log('D');
 
+function Repeat(arr) {
+    const arrNew = [...new Set(arr)];
+    const arrRes = [];
+    for (let i = 0; i < arrNew.length; i++) {
+        if (arr.filter(item => item === arrNew[i]).length > 1) {
+            arrRes.unshift(arr[i]);
+        }
+    }
+    console.log(arrRes);
+}
+array = [1, 3, 2, 2, 3, 0]
+Repeat(array)
 
-var a1 = "wrong";
-function a() { return "1st"; };
-function a(val) { this.a1 = "right"; return "2nd"; }
-console.log(new a());
+function repeted(arr) {
+    let newArr = [];
+    arr = arr.sort(function (a, b) { return a - b; });
+    console.log(arr);
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i + 1] === arr[i]) {
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
+}
+console.log(repeted([1, 3, 2, 2, 3, 0]));
