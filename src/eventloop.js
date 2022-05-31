@@ -60,6 +60,21 @@
 // }
 // console.log(repeted([1, 3, 2, 2, 3, 0]));
 
-let obj = { '1': 0, 1: 1, 0: 2 };
+// const elem = document.getElementById("circle");
+// elem.addEventListener("click", function (e) {
+//     console.log('handler1')
+// }, false);
+// elem.addEventListener("click", function (e) {
+//     console.log('handler2')
+// }, true);
 
-console.log("пупкин".replace("п", "д"))
+
+
+// console.log(document.forms.myform)
+// console.log(document.getElementById("myform"))
+// console.log(document.body.children[0])
+// console.log(document.body.firstChild)
+// console.log(document.forms[0])
+
+
+console.log("object".substring(0, 1))
