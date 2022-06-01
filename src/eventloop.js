@@ -76,5 +76,7 @@
 // console.log(document.body.firstChild)
 // console.log(document.forms[0])
 
-
-console.log("object".substring(0, 1))
+Array.prototype.zip = function (...arrays) {
+    return this.map((val, i) => arrays.reduce((a, array) => [...a, array[i]], [val]));
+}
+console.log([1, 2, 3, 4].zip([4, 5, 6]))
