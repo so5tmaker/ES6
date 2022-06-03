@@ -78,3 +78,48 @@
 
 setTimeout(() => console.log('setTimeout'), 0)
 setImmediate(() => console.log('setImmediate'));
+
+console.log('To dream or not to Dream'.replace(/dream/gi, 'be'));
+const doubleQuotes = "string";
+const singleQuotes = 'string';
+const contains = (string, symbol) => string.includes(symbol);
+console.log(contains(doubleQuotes, '"'));
+console.log(contains(singleQuotes, "'"));
+
+function mult(a) {
+    return function name(b) {
+        return a * b;
+    }
+}
+console.log(mult(5)(5))
+
+let value = 20;
+const showValue = () => {
+    console.log("Value from showValue: " + value);
+}
+const wrapper = () => {
+    let value = 30;
+    console.log("Value from wrapper: " + value);
+    showValue();
+}
+wrapper();
+
+function isEmpty1(object) {
+    return Object.keys(object).length === 0;
+}
+function isEmpty2(object) {
+    for (let key in object) { return false; }
+    return true;
+};
+function isEmpty3(object) { return Object.isEmpty(object); }
+function isEmpty4(object) { return object.hasOwnProperties() };
+console.log(isEmpty1({}));
+console.log(isEmpty2({}));
+// console.log(isEmpty3({}));
+// console.log(isEmpty4({}));
+
+
+
+const convert = (a) => { return a.slice(0, 4) }
+console.log(convert('javascript'));
+
