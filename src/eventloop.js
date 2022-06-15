@@ -118,8 +118,6 @@ console.log(isEmpty2({}));
 // console.log(isEmpty3({}));
 // console.log(isEmpty4({}));
 
-
-
 const convert = (a) => { return a.slice(0, 4) }
 console.log(convert('javascript'));
 
