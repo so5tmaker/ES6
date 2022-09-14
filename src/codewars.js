@@ -1,13 +1,17 @@
-var canConstruct = function (ransomNote, magazine) {
-    const arr = magazine.split('');
-    for (let i = 0; i < ransomNote.length; i++) {
-        if (arr.indexOf(ransomNote[i]) === -1) {
-            return false;
-        } else {
-            arr.splice(arr.indexOf(ransomNote[i]), 1);
+var findMaxConsecutiveOnes = function (nums) {
+    let max = 0;
+    let sum = 0;
+    for (let i = 0; i < nums.length; i++) {
+        sum = sum + nums[i];
+        if (max < sum) {
+            max = sum;
         }
+        if (nums[i] === 0) {
+            sum = 0;
+        }
+
     }
-    return true;
+    return max;
 };
 
-console.log(canConstruct("aa", "ab"));
+console.log(findMaxConsecutiveOnes([1, 1, 0, 1, 1, 1]));
