@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d dist --presets es2015",
-    "watch": "babel src -d dist --presets es2015 -w"
+    "watch": "babel src -d dist --presets es2015 -w",
+    "start": "node src/codewars.js"
   },
   "keywords": [],
   "author": "",
