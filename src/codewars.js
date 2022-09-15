@@ -1,18 +1,15 @@
-isIsogram = (str) => {
-    letters = [];
-    for (let i = 0; i < str.length; i++) {
-        const s = str[i];
-        if (letters.includes(s.toLowerCase())) {
-            return false;
-        }
-        letters.push(s.toLowerCase());
-    }
-    return true;
-}
+countSheep = (arrayOfSheep) => arrayOfSheep.filter(i => i === true).length;
+countSheepShort = (arrayOfSheep) => arrayOfSheep.filter(Boolean).length;
 
-function isIsogramShort(str) {
-    return new Set(str.toUpperCase()).size == str.length;
-}
-
-console.log(isIsogram("moOse"));
-console.log(isIsogramShort("moOse"));
+console.log(countSheep([true, true, true, false,
+    true, true, true, true,
+    true, false, true, false,
+    true, false, false, true,
+    true, true, true, true,
+    false, false, true, true]));
+console.log(countSheepShort([true, true, true, false,
+    true, true, true, true,
+    true, false, true, false,
+    true, false, false, true,
+    true, true, true, true,
+    false, false, true, true]));
