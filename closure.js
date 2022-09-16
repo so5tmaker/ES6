@@ -1,10 +1,10 @@
-var v = 1;
+let v = 1;
 
-var f1 = function () {
+let f1 = function () {
     console.log(v);
 }
 
-var f2 = function () {
+let f2 = function () {
     var v = 1;
     f1();
 }
