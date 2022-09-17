@@ -1,4 +1,6 @@
-const findNextSquare = (sq) => !Number.isInteger(Math.sqrt(sq)) ? - 1 : Math.pow(Math.sqrt(sq) + 1, 2);
+const sortedSquares = (nums) => nums.map(i =>
+    Math.pow(i, 2)
+).sort((a, b) => a - b > 0 ? 1 : -1);
 
 
-console.log(findNextSquare(625));
+console.log(sortedSquares([-7, -3, 2, 3, 11]));
