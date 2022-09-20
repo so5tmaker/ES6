@@ -11,7 +11,7 @@
  */
 var binaryGap = function (n) {
     const binary = n.toString(2);
-    console.log(typeof binary);
+    console.log(binary);
     let end = binary.length - 1;
     for (end; end >= 0; end--) {
         if (binary[end] !== "0") {
