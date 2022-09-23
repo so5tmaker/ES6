@@ -1,34 +1,34 @@
-const callPoints = (ops) => {
-    let result = 0;
-    indx = 0;
-    const records = [];
-    for (let i = 0; i < ops.length; i++) {
-        const num = ops[i];
-        // const previous = records.size - 1;
-        switch (num) {
-            case 'C':
-                // result = 0;
-                // records[i] = 0;
-                break;
-            case '+':
-                result += records[indx - 1] + records[indx - 2];
-                records[indx] = records[indx - 1] + records[indx - 2];
-                indx++;
-                break;
-            case 'D':
-                result += records[indx - 1] * 2;
-                records[indx] = records[indx - 1] * 2;
-                indx++;
-                break;
-            default:
-                result += Number(num);
-                records[indx] = Number(num);
-                indx++;
+const threeSum = (nums) => {
+    const result = [];
+    if (nums.length < 3) return result;
+    nums = nums.sort((a, b) => a - b);
+    for (let i = 0; i < nums.length - 2; i++) {
+        if (nums[i] > 0) break;
+        if (i > 0 && nums[i] === nums[i - 1]) continue;
+        let j = i + 1;
+        let k = nums.length - 1;
+        while (j < k) {
+            let sum = nums[i] + nums[j] + nums[k];
+            if (sum === 0) {
+                result.push([nums[i], nums[j], nums[k]]);
+                while (nums[j] === nums[j + 1]) j++;
+                while (nums[k] === nums[k + 1]) k--;
+                j++;
+                k--;
+                continue;
+            }
+            if (sum < 0) {
+                j++;
+                continue;
+            }
+            if (sum > 0) {
+                k--;
+                continue;
+            }
         }
 
     }
-    console.log(records);
     return result;
-}
+};
 
-console.log(callPoints(['5', '2', 'C', '+', 'D']));
+console.log(threeSum([-1, 0, 1, 2, -1, -4]));
