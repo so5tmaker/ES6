@@ -11,5 +11,5 @@ function sum(a, b) {
 }
 
 let curriedSum = curry(sum);
-console.log(curriedSum(1)(2)); // 3
+console.log((3 < 2 < 1)); // 3
 
