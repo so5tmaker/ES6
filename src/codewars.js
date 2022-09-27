@@ -4,23 +4,22 @@ var merge = function (intervals) {
         return intervals;
     }
     intervals.sort((a, b) => a[0] - b[0]);
-    console.log(intervals);
     for (let i = 0; i < intervals.length; i++) {
         if (i === 0) {
             out.push(intervals[i]);
             continue;
         }
-        if (intervals[i - 1][1] >= intervals[i][0]) {
+        const currentFirst = out.length === 0 ? intervals[i - 1][0] : out[out.length - 1][0];
+        const currentSecond = out.length === 0 ? intervals[i - 1][1] : out[out.length - 1][1];
+        if (currentSecond >= intervals[i][0]) {
             out.pop();
-            const first = intervals[i - 1][0] > intervals[i][0] ? intervals[i][0] : intervals[i - 1][0];
-            const second = intervals[i - 1][1] > intervals[i][1] ? intervals[i - 1][1] : intervals[i][1];
-            if (intervals[i - 1][0] > intervals[i][0] && intervals[i - 1][0] > intervals[i][1]) {
+            const first = currentFirst > intervals[i][0] ? intervals[i][0] : currentFirst;
+            const second = currentSecond > intervals[i][1] ? currentSecond : intervals[i][1];
+            if (currentFirst > intervals[i][0] && currentFirst > intervals[i][1]) {
                 out.push(intervals[i], intervals[i - 1]);
-                console.log(out);
                 continue;
             }
             out.push([first, second]);
-            console.log(out);
             continue;
         }
         out.push(intervals[i]);
