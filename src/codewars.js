@@ -1,5 +1,4 @@
 // HashSet
-
 var twoSum = function (nums, target) {
     const Nums = new Map();
     for (let i = 0; i < nums.length; i++) {
@@ -30,11 +29,9 @@ var twoSumBinarySearch = function (nums, target) {
             }
             if (nums[middle] > numberToFind) {
                 end = --middle;
-                console.log('nums[middle] > numberToFind', [i, middle]);
             }
             if (nums[middle] < numberToFind) {
                 start = ++middle;
-                console.log('nums[middle] < numberToFind', [i, middle]);
             }
         }
     }
