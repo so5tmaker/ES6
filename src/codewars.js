@@ -39,4 +39,6 @@ var twoSumBinarySearch = function (nums, target) {
     return [];
 };
 
+// Two Markers Search
+
 console.log(twoSumBinarySearch([-7, 0, 2, 7, 3, 11, 15, 18, 20], 10));
