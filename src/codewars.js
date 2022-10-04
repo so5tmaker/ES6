@@ -14,8 +14,6 @@ var twoSum = function (nums, target) {
 // Binary Search
 var twoSumBinarySearch = function (nums, target) {
     nums.sort((a, b) => a - b);
-    let end = nums.length;
-    let start = 0;
     found = false;
     for (let i = 0; i < nums.length; i++) {
         let numberToFind = target - nums[i];
@@ -40,5 +38,23 @@ var twoSumBinarySearch = function (nums, target) {
 };
 
 // Two Markers Search
+var twoSum = function (nums, target) {
+    // nums.sort((a, b) => a - b);
+    let end = nums.length - 1;
+    let start = 0;
+    for (let i = 0; i < nums.length; i++) {
+        let numberToFind = target - nums[start];
+        if (nums[end] === numberToFind) {
+            return [start, end];
+        }
+        if (nums[end] > numberToFind) {
+            end = --end;
+        }
+        if (nums[end] < numberToFind) {
+            start = ++start;
+        }
+    }
+    return [];
+};
 
-console.log(twoSumBinarySearch([-7, 0, 2, 7, 3, 11, 15, 18, 20], 10));
+console.log(twoSum([3, 2, 4], 6));
