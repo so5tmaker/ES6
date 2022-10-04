@@ -39,7 +39,7 @@ var twoSumBinarySearch = function (nums, target) {
 
 // Two Markers Search
 var twoSum = function (nums, target) {
-    // nums.sort((a, b) => a - b);
+    nums.sort((a, b) => a - b);
     let end = nums.length - 1;
     let start = 0;
     for (let i = 0; i < nums.length; i++) {
