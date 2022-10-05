@@ -1,60 +1,26 @@
-// HashSet
-var twoSum = function (nums, target) {
-    const Nums = new Map();
-    for (let i = 0; i < nums.length; i++) {
-        let numberToFind = target - nums[i];
-        if (Nums.has(numberToFind)) {
-            return [Nums.get(numberToFind), i];
-        }
-        Nums.set(nums[i], i);
-    }
-    return [];
-};
-
-// Binary Search
-var twoSumBinarySearch = function (nums, target) {
-    nums.sort((a, b) => a - b);
-    found = false;
-    for (let i = 0; i < nums.length; i++) {
-        let numberToFind = target - nums[i];
-        let end = nums.length;
-        let start = i;
-        while (found === false && start <= end) {
-            let middle = Math.floor((start + end) / 2);
-            if (nums[middle] === numberToFind) {
-                found = true;
-                return [i, middle];
-            }
-            if (nums[middle] > numberToFind) {
-                end = --middle;
-            }
-            if (nums[middle] < numberToFind) {
-                start = ++middle;
-            }
+var removeDuplicatesMy = function (nums) {
+    let l = 1;
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[l] !== nums[i]) {
+            nums[l] = nums[i];
+            l++;
         }
     }
-
-    return [];
+    return l;
 };
 
-// Two Markers Search
-var twoSum = function (nums, target) {
-    nums.sort((a, b) => a - b);
-    let end = nums.length - 1;
-    let start = 0;
-    for (let i = 0; i < nums.length; i++) {
-        let numberToFind = target - nums[start];
-        if (nums[end] === numberToFind) {
-            return [start, end];
-        }
-        if (nums[end] > numberToFind) {
-            end = --end;
-        }
-        if (nums[end] < numberToFind) {
-            start = ++start;
+var removeDuplicates = function (nums) {
+    let insertIndex = 1;
+    for (let i = 1; i < nums.length; i++) {
+        // We skip to next index if we see a duplicate element
+        if (nums[i - 1] != nums[i]) {
+            /* Storing the unique element at insertIndex index and incrementing
+               the insertIndex by 1 */
+            nums[insertIndex] = nums[i];
+            insertIndex++;
         }
     }
-    return [];
+    return nums;
 };
 
-console.log(twoSum([3, 2, 4], 6));
+console.log(removeDuplicatesMy([1, 1, 2]));
