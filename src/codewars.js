@@ -24,3 +24,13 @@ var removeDuplicates = function (nums) {
 };
 
 console.log(removeDuplicatesMy([1, 1, 2]));
+
+class Program {
+    constructor(a) {
+        console.log("JavaScript");
+        this.a = a;
+    }
+}
+const c = new Program();
+const d = new Program(123);
+console.log(c, d);
