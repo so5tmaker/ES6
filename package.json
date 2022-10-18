@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node grokking/selection_sort.js"
+    "start": "node interviews/careerist.js"
   },
   "keywords": [],
   "author": "",

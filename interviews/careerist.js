@@ -1,20 +1,19 @@
-const seldom = (nums) => {
-    let count = 1;
-    let oldNum = nums[0];
-    let oldCount = 1;
-    let current = nums[0];
-    for (let i = 1; i < nums.length; i++) {
-        if (current === nums[i]) {
-            count++;
+const seldom = (arr) => {
+    let oldCount = 0;
+    let newCount = 0;
+    let currentNum = arr[0];
+    for (let i = 0; i < arr.length; i++) {
+        if (currentNum === arr[i]) {
+            oldCount += 1;
         }
-        if (current !== nums[i]) {
-            oldNum = oldCount > count ? current : oldNum;
-            oldCount = oldCount > count ? count : oldCount;
-            count = 1;
-            current = nums[i];
+        if (currentNum !== arr[i]) {
+            newCount += 1;
+            currentNum = oldCount <= newCount ? currentNum : arr[i];
+            oldCount = oldCount <= newCount ? oldCount : newCount;
         }
     }
-    return oldNum;
+    return currentNum;
 }
-console.log(seldom([20, 49, 45, 45, 45, 89, 89, 90]));
+
+console.log(seldom([20, 20, 45, 45, 45, 49, 50, 89, 89, 90]));
 
