@@ -1,3 +1,3 @@
-const factorial = (i) => i === 1 ? i : factorial(i - 1) * i;
+const factorial = x => x === 1 ? x : factorial(x - 1) * x;
 
 console.log(factorial(7));
