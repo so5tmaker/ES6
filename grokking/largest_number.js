@@ -7,6 +7,10 @@ let large = (nums) => {
 };
 console.log(large([2, 4, 6, 34, 29, 44, 655, 345]))
 
-const person = (firstName, lastName) => { first: firstName; last: lastName }
+const person = (firstName, lastName) => ({ first: firstName, last: lastName })
 
 console.log(person("Jill", "Wilson"));
+
+// handleChange(e) {
+//     this.setState({ [e.target.id]: e.target.value })
+// }
