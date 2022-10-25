@@ -6,3 +6,7 @@ let large = (nums) => {
     return nums[0] > subMax ? nums[0] : subMax;
 };
 console.log(large([2, 4, 6, 34, 29, 44, 655, 345]))
+
+const person = (firstName, lastName) => { first: firstName; last: lastName }
+
+console.log(person("Jill", "Wilson"));

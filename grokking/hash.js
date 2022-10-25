@@ -24,3 +24,4 @@ checkVoter("John", voted);
 console.log(voted);
 checkVoter("Mike", voted);
 console.log(voted);
+
