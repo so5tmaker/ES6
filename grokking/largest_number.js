@@ -14,3 +14,16 @@ console.log(person("Jill", "Wilson"));
 // handleChange(e) {
 //     this.setState({ [e.target.id]: e.target.value })
 // }
+
+<button onClick={this.handleClick()}>Click this</button>
+
+class Huggable extends React.Component {
+    hug(id) {
+        console.log("hugging " + id);
+    }
+    render() {
+        let name = "kitteh";
+        let button = // Missing code 
+        return button;
+    }
+}

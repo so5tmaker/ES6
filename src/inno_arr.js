@@ -1,5 +1,3 @@
-
-
 function ArrayChallenge(strArr) {
     let newStr = '';
     for (let i = 0; i < strArr[0].length; i++) {

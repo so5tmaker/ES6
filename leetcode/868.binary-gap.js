@@ -32,6 +32,10 @@ var binaryGap = function binaryGap(n) {
             quantity = 0;
         }
     }
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+
+    }
     return gap;
 };
 
