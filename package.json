@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node src/codewars.js"
+    "start": "node algs_and_structures_course-master/7_poisk_v_shirinu.js"
   },
   "keywords": [],
   "author": "",
