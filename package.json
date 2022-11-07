@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node leetcode/242.valid-anagram.js"
+    "start": "node interviews/promise_all_qazdevelop.js"
   },
   "keywords": [],
   "author": "",
