@@ -1,6 +1,6 @@
 // Поиск кратчайшего пути в графе
 
-const graph = {}
+let graph = {}
 graph.a = { b: 2, c: 1 }
 graph.b = { f: 7 }
 graph.c = { d: 5, e: 2 }
@@ -15,7 +15,7 @@ function shortPath(graph, start) {
     let neighbors = {};
     Object.keys(graph).forEach((node) => {
         if (node !== start) {
-            costs[node] = graph[start][node] || 999999999999999;
+            costs[node] = graph[start][node] || Infinity;
         }
     });
     let node = findNodeLowestCost(costs, processed);
@@ -37,7 +37,7 @@ function shortPath(graph, start) {
 
 
 function findNodeLowestCost(costs, processed) {
-    let lowestCost = 999999999999999;
+    let lowestCost = Infinity;
     let lowestNode;
     Object.keys(costs).forEach((node) => {
         let cost = costs[node];
@@ -50,3 +50,11 @@ function findNodeLowestCost(costs, processed) {
 }
 
 console.log(shortPath(graph, 'a'));
+
+graph = {}
+graph.start = { a: 6, b: 2 }
+graph.a = { end: 1 }
+graph.b = { a: 3, end: 5 }
+graph.end = {}
+
+console.log(shortPath(graph, 'start'));
