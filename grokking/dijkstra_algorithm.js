@@ -19,6 +19,7 @@ function shortPath(graph, start) {
         }
     });
     let node = findNodeLowestCost(costs, processed);
+    console.log('costs', costs);
     while (node) {
         const cost = costs[node];
         neighbors = graph[node];

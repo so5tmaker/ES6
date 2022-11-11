@@ -35,11 +35,9 @@ function score(dice) {
         same = prev === elem ? ++same : 1;
         if (triplets[elem] && same === 3) {
             count += triplets[elem];
-            same = 0;
         }
         if (singles[elem] && same < 3 && next !== elem) {
             count += singles[elem] * same;
-            same = 0;
         }
     }
     return count;
