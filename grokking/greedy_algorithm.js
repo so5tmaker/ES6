@@ -1,3 +1,13 @@
+let statesNeeded = new Set(["mt", "wa", "or", "id", "nv", "ut", "ca", "az"]);
+
+let stations = new Map([
+    ["kone", new Set(["id", "nv", "ut"])],
+    ["ktwo", new Set(["wa", "id", "mt"])],
+    ["kthree", new Set(["or", "nv", "са"])],
+    ["kfour", new Set(["nv", "ut"])],
+    ["kfive", new Set(["ca", "az"])]
+]);
+
 /*
 Имплементация базовых операций над множествами взята отсюда:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
@@ -38,7 +48,7 @@ Set.prototype.difference = function (setB) {
     return difference;
 }
 
-export default (statesNeeded, stations) => {
+const states = (statesNeeded, stations) => {
     let finalStations = new Set();
 
     while (statesNeeded.size !== 0) {
