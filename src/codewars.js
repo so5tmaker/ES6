@@ -23,24 +23,33 @@
 // In some languages, it is possible to mutate the input to the function. This is something that you should never do.
 // If you mutate the input, you will not be able to pass all the tests.
 
-function score(dice) {
-    const arr = dice.sort((a, b) => a - b);
-    const triplets = { 1: 1000, 6: 600, 5: 500, 4: 400, 3: 300, 2: 200 };
-    const singles = { 1: 100, 5: 50 };
-    let count = 0, same;
-    for (let i = 0; i < arr.length; i++) {
-        const elem = arr[i];
-        const next = i + 1 === arr.length ? null : arr[i + 1];
-        const prev = i === 0 ? null : arr[i - 1];
-        same = prev === elem ? ++same : 1;
-        if (triplets[elem] && same === 3) {
-            count += triplets[elem];
-        }
-        if (singles[elem] && same < 3 && next !== elem) {
-            count += singles[elem] * same;
-        }
-    }
-    return count;
+function differernElements(arr1, arr2) {
+    const allElements = new Set([...arr1, ...arr2]);
+    return arr1.length + arr2.length == allElements.size;
 }
 
-console.log(score([2, 4, 4, 5, 5, 4, 2, 2]))
+const updated = [
+    {
+        id: "b98a73e7-2d4f-4ab1-9053-53c5f8d9f0ba",
+        locationId: "12648ed0-a494-4f25-a8b7-67a46dcdf255",
+        priority: 0
+    }
+];
+
+const deleted = [
+    {
+        id: "b98a73e7-2d4f-4ab1-9053-53c5f8d9f0ba"
+    }
+];
+
+const checkSameElements = (arr1, arr2) => {
+    const allElements = new Set([...arr1, ...arr2]);
+    return arr1.length + arr2.length !== allElements.size;
+};
+
+const getIds = (ids) => ids.map((x) => x.id);
+
+const checkDeletedUpdatedElements = (deleted, updated) =>
+    checkSameElements(getIds(updated), getIds(deleted));
+
+console.log(checkDeletedUpdatedElements(deleted, updated));
