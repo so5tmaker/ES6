@@ -5,7 +5,7 @@ export default (searchQueue, graph, startPoint) => {
     searchQueue = addToQueue(graph[startPoint], searchQueue);
     let searched = [];
 
-    while(searchQueue.length !== 0) {
+    while (searchQueue.length !== 0) {
         let person = searchQueue.shift();
         if (searched.indexOf(person) === -1) {
             if (personIsSeller(person)) {
