@@ -1,12 +1,15 @@
-let v = 1;
+const a = 1;
 
-let f1 = function () {
-    console.log(v);
+function name(a) {
+    return function () {
+        console.log(a++);
+    }
 }
 
-let f2 = function () {
-    var v = 1;
-    f1();
-}
-
-f2();
+const func1 = name(a);
+func1();
+func1();
+console.log(a);
+// 1
+// 2
+// 1

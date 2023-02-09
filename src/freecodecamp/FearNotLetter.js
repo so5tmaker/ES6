@@ -1,3 +1,13 @@
+
+// Problem Explanation
+// You will create a program that will find the missing letter from a string and return it.If there is no missing letter, the program should return undefined.There is currently no test case for the string missing more than one letter, but if there was one, recursion would be used.Also, the letters are always provided in order so there is no need to sort them.
+
+// Relevant Links
+
+// String global object 2.8k
+// JS String Prototype CharCodeAt 5.6k
+// String.fromCharCode
+
 // Hints
 // Hint 1
 // You will need to convert from character to ASCII code using the two methods provided in the description.
@@ -23,3 +33,4 @@ const fearNotLetter = (str) => {
 console.log(fearNotLetter("stvwx"));
 // console.log(fearNotLetter("bcdf"));
 // console.log(fearNotLetter("abcdefghijklmnopqrstuvwxyz"));
+
