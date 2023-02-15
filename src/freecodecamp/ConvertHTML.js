@@ -1,14 +1,6 @@
 // Convert HTML Entities
 // Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
 
-// console.log(convertHTML1("Dolce &Gabbana") should return the string Dolce &amp; Gabbana.
-// console.log(convertHTML1("Hamburgers < Pizza < Tacos") should return the string Hamburgers &lt; Pizza &lt; Tacos.
-// console.log(convertHTML1("Sixty > twelve") should return the string Sixty &gt; twelve.
-// console.log(convertHTML1('Stuff in "quotation marks"') should return the string Stuff in &quot;quotation marks &quot;.
-// console.log(convertHTML1("Schindler's List") should return the string Schindler &apos;s List.
-// console.log(convertHTML1("<>") should return the string &lt;&gt;.
-// console.log(convertHTML1("abc") should return the string abc.
-
 // Hints
 // Hint 1
 // You can use regular Expressions however I didn’t in this case.
