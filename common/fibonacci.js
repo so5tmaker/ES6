@@ -1,3 +1,15 @@
+const fibonacci = n => {
+    let a = 1, b = 1;
+
+    for (let i = 3; i <= n; i++) {
+        [a, b] = [b, a + b];
+    }
+
+    return b;
+};
+
+console.log(fibonacci(10)); // outputs 55
+
 // For Loop
 // The very basic solution that every developer should be able to code, when woke up in the middle of the night:
 const fibonacci0 = n => {
@@ -26,7 +38,7 @@ console.log(sequence0); // outputs 55
 // the sequence and calculate each subsequent number.
 // Here's an example function that generates a Fibonacci sequence of a specified length:
 
-function fibonacci(length) {
+function fibonacci_(length) {
     let sequence = [0, 1];
     for (let i = 2; i < length; i++) {
         sequence[i] = sequence[i - 1] + sequence[i - 2];
@@ -41,7 +53,7 @@ function fibonacci(length) {
 
 // You can call this function with a desired length argument to generate a Fibonacci sequence of that length, like so:
 
-let sequence = fibonacci(10); // generates a Fibonacci sequence of length 10
+let sequence = fibonacci_(10); // generates a Fibonacci sequence of length 10
 console.log(sequence); // outputs [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 
 // You can generate a Fibonacci sequence in JavaScript without using an array by simply keeping track of the 
