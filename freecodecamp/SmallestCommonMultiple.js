@@ -1,7 +1,14 @@
+
+
+// НАПИСАТЬ КАРАНДАШОМ ПОЛНОЕ РЕШЕНИЕ ХИНТА 1 С ПОМОЩЬЮ УПРОЩЕННОГО АЛГОРИТМА И ПОНЯТЬ ЕГО!!!
+// ПОТОМ САМОМУ РЕАЛИЗОВАТЬ ЭТО СКРИПТ НИЖЕ НА JS!!!
+
+
+
 // READ THE INSTRUCTIONS CAREFULLY!!!
 // AND WRITE MAIN POINTS DOWN IN THE COPYBOOK USING PENCIL!!!
 
-// Smallest Common Multiple
+// Smallest Common Multiple (Наименьшее общее кратное)
 // Find the smallest common multiple of the provided parameters that can be evenly divided by both,
 // as well as by all sequential numbers in the range between these parameters.
 
@@ -10,32 +17,24 @@
 // For example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is 
 // also evenly divisible by all numbers between 1 and 3. The answer here would be 6.
 
-function smallestCommons(arr) {
-    arr.sort((a, b) => a - b);
-    const nums = [];
-    const multiples = [];
-    for (let i = arr[1]; i <= arr[0]; i--) {
-        nums.push(i);
+const smallestCommons = (arr) => {
+    const [min, max] = arr.sort((a, b) => a - b);
+    const divisors = max - min + 1;
+    let lagestMultiple = 1;
+    for (let i = min; i <= max; i++) {
+        lagestMultiple *= i;
     }
-    for (let i = 1; i < nums.length; i++) {
-        const gcd = getDivisor(lcm, nums[i]);
-        lcm = (lcm * nums[i]) / gcd;
-    }
-    // get the greatest common divisor
-    const getDivisor = (a, b) => {
-        if (b === 0) {
-            return a;
-        } else {
-            return getDivisor(a, a % b);
+    for (let multiple = max; multiple <= lagestMultiple; multiple += max) {
+        let divisorCount = 0;
+        for (let i = min; i <= max; i++) {
+            if (multiple % i === 0) {
+                divisorCount++;
+            }
+        }
+        if (divisorCount === divisors) {
+            return multiple
         }
     }
-    let lcm = nums[0];
-    for (let i = 1; i < nums.length; i++) {
-        const gcd = getDivisor(lcm, nums[i]);
-        lcm = (lcm * nums[i]) / gcd;
-    }
-
-    return lcm;
 }
 
 console.log(smallestCommons([1, 5])) // should return a number.
@@ -70,7 +69,7 @@ function smallestCommons1(arr) {
     // Largest possible value for SCM
     let upperBound = 1;
     for (let i = min; i <= max; i++) {
-        upperBound *= i;
+        upperBound *= i; // ВЕРХНЯЯ ГРАНИЦА, ВСЕ ДЕЛЯТ ЕЕ БЕЗ ОСТАТКА
     }
     // Test all multiples of 'max'
     for (let multiple = max; multiple <= upperBound; multiple += max) {
@@ -82,7 +81,7 @@ function smallestCommons1(arr) {
                 divisorCount += 1;
             }
         }
-        if (divisorCount === numberDivisors) {
+        if (divisorCount === numberDivisors) { // ВСЕ ЧИСЛА ПОДЕЛИЛИ БЕЗ ОСТАТКА multiple
             return multiple;
         }
     }
