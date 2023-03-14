@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node freecodecamp/DropIt.js"
+    "start": "node freecodecamp/Steamroller.js"
   },
   "keywords": [],
   "author": "",
