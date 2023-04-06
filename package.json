@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node freecodecamp/BinaryAgent.js"
+    "start": "node freecodecamp/MapDebris.js"
   },
   "keywords": [],
   "author": "",
