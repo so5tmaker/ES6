@@ -16,21 +16,37 @@
 // Create a function that takes two or more arrays and returns an array of their symmetric difference. 
 // The returned array must contain only unique values(no duplicates).
 
-const sym = (...args) => {
-    let diff = [];
-    const getArr = (y) => {
-        let all = [];
-        for (let i = 0; i < args.length; i++) {
-            if (y !== i) { all = [...args[i], ...all] }
-        }
-        return all;
-    }
-    for (let i = 0; i < args.length; i++) {
-        diffArr = getArr(i);
-        const arr1 = args[i].filter(item => !diffArr.includes(item));
-        diff = [...diff, ...arr1];
-    }
-    return [...(new Set([...diff.sort((a, b) => a - b)]))];
-};
+const diff = (arr1, arr2) => [
+    ...arr1.filter(e => !arr2.includes(e)),
+    ...arr2.filter(e => !arr1.includes(e))
+];
 
-console.log(sym([1, 2, 3, 3], [5, 2, 1, 4]));
+const sym = (...args) => [...new Set(args.reduce(diff))];
+
+console.log([...[1, 1, 2, 5].filter(e => ![2, 2, 3, 5].includes(e)), ...[2, 2, 3, 5].filter(e => ![1, 1, 2, 5].includes(e))]);
+console.log(sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]));
+
+
+
+const array1 = [{
+    weight: 6.96,
+    volume: 18.97,
+    description: "occaecat ipsum nulla irure enim",
+    price: 158419.14,
+    prepayment: 102200.06,
+}, {
+    weight: 9.96,
+    volume: 15.97,
+    description: "occaecat ipsum nulla irure enim",
+    price: 458419.14,
+    prepayment: 82200.06,
+},
+{
+    weight: 13.96,
+    volume: 5.97,
+    description: "occaecat ipsum nulla irure enim",
+    price: 658419.14,
+    prepayment: 902200.06,
+}
+];
+
