@@ -23,30 +23,5 @@ const diff = (arr1, arr2) => [
 
 const sym = (...args) => [...new Set(args.reduce(diff))];
 
-console.log([...[1, 1, 2, 5].filter(e => ![2, 2, 3, 5].includes(e)), ...[2, 2, 3, 5].filter(e => ![1, 1, 2, 5].includes(e))]);
 console.log(sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]));
-
-
-
-const array1 = [{
-    weight: 6.96,
-    volume: 18.97,
-    description: "occaecat ipsum nulla irure enim",
-    price: 158419.14,
-    prepayment: 102200.06,
-}, {
-    weight: 9.96,
-    volume: 15.97,
-    description: "occaecat ipsum nulla irure enim",
-    price: 458419.14,
-    prepayment: 82200.06,
-},
-{
-    weight: 13.96,
-    volume: 5.97,
-    description: "occaecat ipsum nulla irure enim",
-    price: 658419.14,
-    prepayment: 902200.06,
-}
-];
 
