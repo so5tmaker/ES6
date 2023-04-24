@@ -5,6 +5,13 @@
 // For example, aab should return 2 because it has 6 total permutations (aab, aab, aba, aba, baa, baa), 
 // but only 2 of them (aba and aba) don't have the same letter (in this case a) repeating.
 
+// Пожалуйста, без повторов
+// Возвратить общее количество перестановок предоставленной строки, которые не содержат повторяющихся последовательных букв.
+// Предположим, что все символы в предоставленной строке уникальны.
+
+// Например, aab должен возвращать 2, потому что у него всего 6 перестановок (aab, aab, aba, aba, baa, baa), 
+// но только в 2 из них (aba и aba) не повторяется одна и та же буква (в данном случае a).
+
 // Заново решить
 
 const permAlone = (str) => {
@@ -17,12 +24,12 @@ const permAlone = (str) => {
     let tmp;
 
     // Return 0 if str contains same character.
-    if (str.match(regex) !== null && str.match(regex)[0] === str) return 0;
+    if (str.match(regex) && str.match(regex)[0] === str) return 0;
 
     // Function to swap variables' content.
-    function swap(index1, index2) {
+    const swap = (index1, index2) => {
         tmp = arr[index1];
-        arr[index1] = arr[index2];
+        arr[index2] = arr[index2];
         arr[index2] = tmp;
     }
 
