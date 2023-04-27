@@ -28,15 +28,14 @@ const permAlone = (str) => {
 
     // Function to swap variables' content.
     const swap = (index1, index2) => {
-        tmp = arr[index1];
-        arr[index2] = arr[index2];
-        arr[index2] = tmp;
+        [arr[index1], arr[index2]] = [arr[index2], arr[index1]];
     }
+
 
     // Generate arrays of permutations using the algorithm.
     const generate = (int) => {
         if (int === 1) {
-            // Make sure to join the characters as we create  the permutation arrays
+            // Make sure to join the characters as we create the permutation arrays
             permutations.push(arr.join(""));
         } else {
             for (let i = 0; i != int; ++i) {
@@ -57,4 +56,4 @@ const permAlone = (str) => {
     return filtered.length;
 }
 
-console.log(permAlone('aab'))
+console.log(permAlone('aabb'))
