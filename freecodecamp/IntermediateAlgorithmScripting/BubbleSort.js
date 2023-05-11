@@ -2,7 +2,7 @@
 
 // Implement Bubble Sort
 // This is the first of several challenges on sorting algorithms. Given an array of unsorted items, 
-// we want to be able to return a sorted array.We will see several different methods to do this and 
+// we want to be able to return a sorted array. We will see several different methods to do this and 
 // learn some tradeoffs between these different approaches. While most modern languages have built-in 
 // sorting methods for operations like this, it is still important to understand some of the common 
 // basic approaches and learn how they can be implemented.
@@ -19,7 +19,24 @@
 // returns an array of these integers in sorted order from least to greatest.
 
 const bubbleSort = (array) => {
-    // Only change code below this line
+    let rest = array.length;
+
+    const changePlace = (length) => {
+        for (let i = 0; i < length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                const firsTemp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = firsTemp;
+            }
+        }
+        return array;
+    }
+
+    while (rest !== 0) {
+        changePlace(rest);
+        rest--;
+    }
     return array;
-    // Only change code above this line
 }
+
+console.log(bubbleSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]));
