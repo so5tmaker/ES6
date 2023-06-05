@@ -22,3 +22,8 @@ function quickSort(array) {
 }
 
 console.log(quickSort(arr))
+
+//Swapping array elements via ES6 array destructuring
+function swap(arr, x, y) {
+    [arr[x], arr[y]] = [arr[y], arr[x]];
+}
