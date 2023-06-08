@@ -23,3 +23,27 @@
 // which is responsible for merging two sorted arrays, and another function, 
 // for instance mergeSort, which is responsible for the recursion that produces
 // single - item arrays to feed into merge. Good luck!
+
+function mergeSort(array) {
+  if(array.length===1){
+    return array;
+  }
+  const index = Math.floor(array.length/2);
+  return merge(mergeSort(array.slice(0,index)), mergeSort(array.slice(index)));
+}
+
+function merge(first, second){
+  let merged=[];
+  while(first.length&&second.length){
+    if(first[0]>second[0]){
+      merged.push(second.shift());
+    }
+    if(first[0]<second[0]){
+      merged.push(first.shift());
+    }
+    if(first[0]===second[0]){
+      merged.push(first.shift(),second.shift());
+    }
+  }
+  return [...merged,...first,...second];
+}
