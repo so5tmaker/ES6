@@ -22,4 +22,36 @@
 // A good way to implement this is to write one function, for instance merge, 
 // which is responsible for merging two sorted arrays, and another function, 
 // for instance mergeSort, which is responsible for the recursion that produces
-// single - item arrays to feed into merge. Good luck!
+// single-item arrays to feed into merge. Good luck!
+
+const merge = (array1, array2) => {
+    let merged = [];
+    while (array1.length && array2.length) {
+        if (array1[0] < array2[0]) {
+            merged.push(array1.shift());
+        } else if (array1[0] > array2[0]) {
+            merged.push(array2.shift());
+        } else {
+            merged.push(array1.shift(), array2.shift());
+        }
+    }
+    // After looping ends, one array is empty, and other array contains only
+    // values greater than all values in `merged`
+    return [...merged, ...array1, ...array2];
+}
+
+function mergeSort(array) {
+    if (array.length === 1) {
+        return array;
+    }
+    const middleIndex = Math.floor(array.length / 2);
+    const [firstHalf, secondHalf] = [
+        array.slice(0, middleIndex),
+        array.slice(middleIndex)
+    ];
+    console.log(firstHalf);
+    console.log(secondHalf);
+    return [...merge(mergeSort(firstHalf), mergeSort(secondHalf))];
+}
+
+console.log(mergeSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92])); 
