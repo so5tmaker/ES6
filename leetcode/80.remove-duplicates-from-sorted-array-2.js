@@ -1,15 +1,17 @@
-// 80. Remove Duplicates from Sorted Array I
+// 80. Remove Duplicates from Sorted Array II
 
 var removeDuplicates = function (nums) {
     let j = 1;
     let k = 0;
+    let l = 0;
     for (i = 0; i < nums.length; i++) {
         if (j <= 2) k++;
+        if (j > 2) { l = i; j = 1; }
         if (nums[i] === nums[i + 1]) {
             j++;
         } else {
-            nums[i] = i < (nums.length - 1) && (j > 2) ? nums[i + 1] : nums[i];
-            j = 1;
+            nums[l] = i < (nums.length - 1) ? nums[i + 1] : nums[i];
+            l = i;
         }
     }
     return [nums, k];
