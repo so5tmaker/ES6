@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node leetcode/80.remove-duplicates-from-sorted-array-2.js"
+    "start": "node leetcode/test.js"
   },
   "keywords": [],
   "author": "",
