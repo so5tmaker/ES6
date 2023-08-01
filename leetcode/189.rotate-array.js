@@ -65,10 +65,39 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var rotate = function (nums, k) {
-    for (let i = 0; i < k; i++) {
-        const first = nums.pop(i);
-        nums.unshift(first);
-    }
+    nums = [...nums.splice(k + 1), ...nums.splice(0, k + 1)]
+    console.log(nums)
 };
+
+rotate([1, 2, 3, 4, 5, 6, 7], 3)
+
+const nums = [1, 2, 3, 4, 5, 6, 7];
+console.log([...nums.splice(4), ...nums.splice(0, 4)])
+
+function rotateArray1(nums, k) {
+    k = k % nums.length; // Handle k greater than the array length
+    if (k === 0) return nums; // No rotation needed
+
+    const cutIndex = nums.length - k;
+    const cutElements = nums.splice(cutIndex); // Cut elements from cutIndex to the end
+    nums.unshift(...cutElements); // Move cut elements to the beginning of the array
+    return nums;
+}
+
+console.log(rotateArray1([1, 2, 3, 4, 5, 6, 7], 3)); // Output: [5, 6, 7, 1, 2, 3, 4]
+
+function rotateArray2(nums, k) {
+    k = k % nums.length; // Handle k greater than the array length
+    if (k === 0) return nums; // No rotation needed
+
+    const cutIndex = nums.length - k;
+    const cutElements = nums.slice(cutIndex); // Get elements from cutIndex to the end
+    const rotatedArray = cutElements.concat(nums.slice(0, cutIndex)); // Concatenate the sliced arrays
+    return rotatedArray;
+}
+
+console.log(rotateArray2([1, 2, 3, 4, 5, 6, 7], 3)); // Output: [5, 6, 7, 1, 2, 3, 4]
+
+
 // @lc code=end
 
