@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node leetcode/test.js"
+    "start": "node leetcode/189.rotate-array.js"
   },
   "keywords": [],
   "author": "",

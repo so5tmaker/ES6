@@ -88,15 +88,15 @@ console.log(rotateArray1([1, 2, 3, 4, 5, 6, 7], 3)); // Output: [5, 6, 7, 1, 2, 
 
 function rotateArray2(nums, k) {
     k = k % nums.length; // Handle k greater than the array length
-    if (k === 0) return nums; // No rotation needed
+    if (k === 0) return; // No rotation needed
 
     const cutIndex = nums.length - k;
-    const cutElements = nums.slice(cutIndex); // Get elements from cutIndex to the end
-    const rotatedArray = cutElements.concat(nums.slice(0, cutIndex)); // Concatenate the sliced arrays
-    return rotatedArray;
+    const cutElements = nums.splice(cutIndex); // Cut elements from cutIndex to the end
+    nums.unshift(...cutElements); // Move cut elements to the beginning of the array
+    console.log(nums);
 }
 
-console.log(rotateArray2([1, 2, 3, 4, 5, 6, 7], 3)); // Output: [5, 6, 7, 1, 2, 3, 4]
+rotateArray2([1, 2, 3, 4, 5, 6, 7], 3); // Output: [5, 6, 7, 1, 2, 3, 4]
 
 
 // @lc code=end
