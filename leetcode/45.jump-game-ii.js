@@ -62,23 +62,25 @@
  * @return {number}
  */
 var jump = function (nums) {
-    let next = 0;
-    let j = 0;
+    const n = nums.length;
 
-    if (nums.length === 1) return 0;
+    if (n <= 1) return 0;
 
-    for (let i = 0; i < nums.length - 1; i++) {
-        if (i > next) return 0;
+    let jumps = 1; // Initialize jumps to 1 since you start at the first index
+    let current = nums[0]; // The maximum index reachable from the current index
+    let next = nums[0]; // The maximum index reachable from the next jump
 
-        next = Math.max(Math.max(i + nums[i], j + nums[i]), next)
-
-        if (next >= nums.length - 1) {
-            return j;
+    for (let i = 1; i < n; i++) {
+        if (i > current) {
+            // If you've reached the current maximum index, then make a jump
+            jumps++;
+            current = next;
         }
-        j++;
+
+        next = Math.max(i + nums[i], next);
     }
 
-    return 0;
+    return jumps;
 };
 console.log(jump([2, 3, 1, 1, 4]));
 console.log(jump([2, 3, 0, 1, 4]));
