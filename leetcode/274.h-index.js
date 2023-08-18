@@ -64,7 +64,7 @@ var hIndex = function (citations) {
     for (let i = 0; i < citations.length; i++) {
         if (i + 1 <= citations[i]) {
             index++;
-        };
+        } else { return index };
     }
 
     return index;
