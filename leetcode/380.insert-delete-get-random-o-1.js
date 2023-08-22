@@ -71,39 +71,69 @@
 
 // @lc code=start
 
-var RandomizedSet = function() {
-    
+var RandomizedSet = function () {
+    this.set = new Set();
 };
 
 /** 
  * @param {number} val
  * @return {boolean}
  */
-RandomizedSet.prototype.insert = function(val) {
-    
+RandomizedSet.prototype.insert = function (val) {
+    if (!this.set.has(val)) {
+        this.set.add(val);
+
+        return true;
+    }
+
+    return false;
 };
 
 /** 
  * @param {number} val
  * @return {boolean}
  */
-RandomizedSet.prototype.remove = function(val) {
-    
+RandomizedSet.prototype.remove = function (val) {
+    if (this.set.has(val)) {
+        this.set.delete(val);
+
+        return true;
+    }
+
+    return false;
 };
 
 /**
  * @return {number}
  */
-RandomizedSet.prototype.getRandom = function() {
-    
+RandomizedSet.prototype.getRandom = function () {
+    if (this.set.size === 0) {
+        return 0;
+    }
+
+    var i = Math.floor(Math.random() * this.set.size);
+
+    return Array.from(this.set)[i];
 };
 
-/** 
+/**
  * Your RandomizedSet object will be instantiated and called as such:
  * var obj = new RandomizedSet()
  * var param_1 = obj.insert(val)
  * var param_2 = obj.remove(val)
  * var param_3 = obj.getRandom()
  */
+
+var obj = new RandomizedSet()
+var param_1 = obj.insert(5);
+var param_2 = obj.insert(8);
+var param_3 = obj.remove(8);
+var param_4 = obj.insert(9);
+obj.insert(7);
+obj.insert(78);
+obj.insert(13);
+var param_5 = obj.getRandom();
+console.log(param_5);
+console.dir(obj.set);
 // @lc code=end
 
