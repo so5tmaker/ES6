@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node leetcode/238.product-of-array-except-self.js"
+    "start": "node leetcode/134.gas-station.js"
   },
   "keywords": [],
   "author": "",

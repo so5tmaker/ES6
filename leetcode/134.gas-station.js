@@ -78,8 +78,30 @@
  * @param {number[]} cost
  * @return {number}
  */
-var canCompleteCircuit = function(gas, cost) {
-    
+var canCompleteCircuit = function (gas, cost) {
+    const n = gas.length - 1;
+
+    let startIndex = -1, prev = 0;
+
+    for (let i = 0; i <= n; i++) {
+        if (startIndex === i) {
+            return gas[i] < prev ? startIndex : -1;
+        }
+
+        if (gas[i] > cost[i] && startIndex === -1) {
+            startIndex = i;
+            prev = gas[i];
+        }
+
+        if (startIndex > -1) {
+            prev = prev - cost[i] + gas[i + 1 > n ? 0 : i + 1];
+            i = i === n ? 0 : i;
+        }
+    }
+
+    return startIndex;
 };
+console.log(canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]));
+console.log(canCompleteCircuit([2, 3, 4], [3, 4, 3]));
 // @lc code=end
 
