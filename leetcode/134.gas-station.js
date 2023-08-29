@@ -78,30 +78,53 @@
  * @param {number[]} cost
  * @return {number}
  */
-var canCompleteCircuit = function (gas, cost) {
+var canCompleteCircuitWrong = function (gas, cost) {
     const n = gas.length - 1;
 
-    let startIndex = -1, prev = 0;
+    let start = -1, prev = 0, j = 0;
 
     for (let i = 0; i <= n; i++) {
-        if (startIndex === i) {
-            return gas[i] < prev ? startIndex : -1;
+        if (start === i) {
+            return gas[i] < prev ? start : -1;
         }
 
-        if (gas[i] > cost[i] && startIndex === -1) {
-            startIndex = i;
+        if (gas[i] > cost[i] && start === -1) {
+            start = i;
             prev = gas[i];
         }
 
-        if (startIndex > -1) {
+        if (start > -1) {
             prev = prev - cost[i] + gas[i + 1 > n ? 0 : i + 1];
             i = i === n ? 0 : i;
         }
+
+        if (prev <= 0) {
+            start = -1;
+        }
     }
 
-    return startIndex;
+    return start;
 };
+
+function canCompleteCircuit(gas, cost) {
+    let totalGas = 0;
+    let currentGas = 0;
+    let startIndex = 0;
+
+    for (let i = 0; i < gas.length; i++) {
+        totalGas += gas[i] - cost[i];
+        currentGas += gas[i] - cost[i];
+
+        if (currentGas < 0) {
+            currentGas = 0;
+            startIndex = i + 1;
+        }
+    }
+
+    return totalGas >= 0 ? startIndex : -1;
+}
 console.log(canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]));
 console.log(canCompleteCircuit([2, 3, 4], [3, 4, 3]));
+console.log(canCompleteCircuit([5, 1, 2, 3, 4], [4, 4, 1, 5, 1]));
 // @lc code=end
 
