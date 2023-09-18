@@ -1,3 +1,5 @@
+'use strict';
+
 const a = 1;
 
 function name(a) {
@@ -13,3 +15,28 @@ console.log(a);
 // 1
 // 2
 // 1
+
+
+
+
+const User = function () {
+    this.name = 'Alex';
+    console.log(this);
+    return {
+        name: 'Sasha',
+        getName() {
+            console.log(this, this.name);
+            return this.name;
+        },
+        getArrowName: () => {
+            console.log(this, this.name);
+            return this.name;
+        }
+    };
+}
+
+const u = new User();
+
+console.log(a);
+u.getName();
+u.getArrowName();
