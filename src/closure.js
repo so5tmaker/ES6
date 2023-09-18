@@ -37,6 +37,6 @@ const User = function () {
 
 const u = new User();
 
-console.log(a);
+console.log(u);
 u.getName();
 u.getArrowName();
