@@ -2,21 +2,16 @@
 
 const a = 1;
 
-function name(a) {
+function getName(a) {
     return function () {
         console.log(a++);
     }
 }
 
-const func1 = name(a);
-func1();
-func1();
-console.log(a);
-// 1
-// 2
-// 1
-
-
+const func1 = getName(a);
+func1(); // 1
+func1(); // 2
+console.log(a); // 1
 
 
 const User = function () {
