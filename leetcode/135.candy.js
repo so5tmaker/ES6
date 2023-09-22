@@ -111,4 +111,3 @@ var candy = function (ratings) {
 console.log(candy([1, 0, 2]));
 console.log(candy([1, 2, 2]));
 // @lc code=end
-
