@@ -85,8 +85,29 @@
  * @param {string} s
  * @return {number}
  */
-var romanToInt = function(s) {
-    
+var romanToInt = function (s) {
+    const n = s.length;
+    let sum = 0, i = 0;
+    const romans = { 'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000 };
+    const minuses = {
+        'I': ['V', 'X'], 'X': ['L', 'C'], 'C': ['D', 'M']
+    }
+
+    while (i < n) {
+        if (minuses[s[i]] && minuses[s[i]].includes(s[i + 1])) {
+            sum += romans[s[i + 1]] - romans[s[i]];
+            i++;
+        } else {
+            sum += romans[s[i]];
+        }
+        i++;
+    }
+
+    return sum;
 };
+
+console.log(romanToInt("LVIII"));
+console.log(romanToInt("III"));
+console.log(romanToInt("MCMXCIV"));
 // @lc code=end
 
