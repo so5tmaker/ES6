@@ -59,8 +59,28 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLastWord = function(s) {
-    
+var lengthOfLastWord = function (s) {
+    const splits = s.split(' ').filter(s => s !== "");
+    return splits[splits.length - 1].length;
 };
+
+function lengthOfLastWord1(s) {
+    // Trim any leading or trailing spaces
+    s = s.trim();
+
+    // Split the string into words using spaces as the delimiter
+    const words = s.split(' ');
+
+    // Check if there are any words in the array
+    if (words.length === 0) {
+        return 0; // No words found
+    }
+
+    // Get the last word from the array and return its length
+    const lastWord = words[words.length - 1];
+    return lastWord.length;
+}
+console.log(lengthOfLastWord("   fly me   to   the moon  "));
+console.log(lengthOfLastWord1("   fly me   to   the moon  "));
 // @lc code=end
 
