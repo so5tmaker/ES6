@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node leetcode/13.roman-to-integer.js"
+    "start": "node leetcode/14.longest-common-prefix.js"
   },
   "keywords": [],
   "author": "",
