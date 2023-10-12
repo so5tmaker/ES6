@@ -50,8 +50,71 @@
  * @param {string} t
  * @return {boolean}
  */
-var isIsomorphic = function(s, t) {
-    
+var isIsomorphic = function (s, t) {
+    if (s.length !== t.length) return false;
+
+    const sMap = {};
+    const tMap = {};
+
+    for (let i = 0; i < s.length; i++) {
+        const sChar = s[i];
+        const tChar = t[i];
+
+        if (!sMap[sChar]) {
+            sMap[sChar] = tChar;
+        } else if (sMap[sChar] !== tChar) {
+            return false;
+        }
+
+        if (!tMap[tChar]) {
+            tMap[tChar] = sChar;
+        } else if (tMap[tChar] !== sChar) {
+            return false;
+        }
+    }
+
+    console.log('sMap', sMap);
+    console.log('tMap', tMap);
+
+    return true;
 };
+function isIsomorphicComments(s, t) {
+    // Step 1: Check if the lengths of s and t are equal
+    if (s.length !== t.length) {
+        return false; // If not equal, they cannot be isomorphic
+    }
+
+    // Step 2: Create maps to store character mappings
+    const sMap = {}; // Mapping for characters in s
+    const tMap = {}; // Mapping for characters in t
+
+    // Step 3: Iterate through the characters of both strings
+    for (let i = 0; i < s.length; i++) {
+        const sChar = s[i]; // Current character in s
+        const tChar = t[i]; // Current character in t
+
+        // Step 4: Check and set mappings for s
+        if (!sMap[sChar]) { // If the character is not in the map
+            sMap[sChar] = tChar; // Add it with the corresponding character in t
+        } else if (sMap[sChar] !== tChar) { // If it's in the map but doesn't match t
+            return false; // They are not isomorphic, return false
+        }
+
+        // Step 4: Check and set mappings for t
+        if (!tMap[tChar]) { // If the character is not in the map
+            tMap[tChar] = sChar; // Add it with the corresponding character in s
+        } else if (tMap[tChar] !== sChar) { // If it's in the map but doesn't match s
+            return false; // They are not isomorphic, return false
+        }
+    }
+
+    // Step 5: If no mismatches found, return true (they are isomorphic)
+    return true;
+}
+
+// Test cases
+console.log(isIsomorphic("egg", "add"));     // Output: true
+console.log(isIsomorphic("foo", "bar"));     // Output: false
+console.log(isIsomorphic("paper", "title")); // Output: true
 // @lc code=end
 
