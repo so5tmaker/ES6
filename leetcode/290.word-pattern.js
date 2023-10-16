@@ -60,8 +60,39 @@
  * @param {string} s
  * @return {boolean}
  */
-var wordPattern = function(pattern, s) {
-    
+var wordPattern = function (pattern, s) {
+    const sArray = s.split(' ');
+
+    if (pattern.length !== sArray.length) {
+        return false;
+    }
+
+    const sMap = {};
+    const pMap = {};
+
+    for (let i = 0; i < sArray.length; i++) {
+        const sWord = sArray[i];
+        const pChar = pattern[i];
+
+        if (!sMap[sWord]) {
+            sMap[sWord] = pChar;
+        } else if (sMap[sWord] !== pChar) {
+            return false;
+        }
+
+        if (!pMap[pChar]) {
+            pMap[pChar] = sWord;
+        } else if (pMap[pChar] !== sWord) {
+            return false;
+        }
+    }
+
+    return true;
 };
+
+// Test cases
+console.log(wordPattern("abba", "dog cat cat dog"));     // Output: true
+console.log(wordPattern("abba", "dog cat cat fish"));     // Output: false
+console.log(wordPattern("aaaa", "dog cat cat dog")); // Output: true
 // @lc code=end
 
