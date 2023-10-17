@@ -61,38 +61,38 @@
  * @return {boolean}
  */
 var wordPattern = function (pattern, s) {
-    const sArray = s.split(' ');
-
-    if (pattern.length !== sArray.length) {
+    const words = s.split(' ');
+    if (pattern.length !== words.length) {
         return false;
     }
 
-    const sMap = {};
-    const pMap = {};
+    const patternMap = new Map();
+    const wordMap = new Map();
 
-    for (let i = 0; i < sArray.length; i++) {
-        const sWord = sArray[i];
-        const pChar = pattern[i];
+    for (let i = 0; i < pattern.length; i++) {
+        const letter = pattern[i];
+        const word = words[i];
 
-        if (!sMap[sWord]) {
-            sMap[sWord] = pChar;
-        } else if (sMap[sWord] !== pChar) {
+        if (patternMap.has(letter) && patternMap.get(letter) !== word) {
             return false;
         }
 
-        if (!pMap[pChar]) {
-            pMap[pChar] = sWord;
-        } else if (pMap[pChar] !== sWord) {
+        if (wordMap.has(word) && wordMap.get(word) !== letter) {
             return false;
         }
+
+        patternMap.set(letter, word);
+        wordMap.set(word, letter);
     }
 
     return true;
 };
 
 // Test cases
-console.log(wordPattern("abba", "dog cat cat dog"));     // Output: true
-console.log(wordPattern("abba", "dog cat cat fish"));     // Output: false
-console.log(wordPattern("aaaa", "dog cat cat dog")); // Output: true
+// console.log(wordPattern("abba", "dog cat cat dog"));     // Output: true
+// console.log(wordPattern("abba", "dog cat cat fish"));     // Output: false
+// console.log(wordPattern("aaaa", "dog cat cat dog")); // Output: true
+// console.log(wordPattern("abba", "dog constructor constructor dog"));
+console.log(wordPattern("abba", "dog dog dog dog"));
 // @lc code=end
 
