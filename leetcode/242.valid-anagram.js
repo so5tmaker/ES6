@@ -36,6 +36,9 @@ function buildCharObject(str) {
     return charObj;
 }
 
+var isAnagramMy = function (s, t) {
+    return s.split('').sort().join('') === t.split('').sort().join('')
+};
 
 // Oneliner
 const anagram = (a, b) => [...a.toLowerCase()].sort().toString() === [...b.toLowerCase()].sort().toString();
