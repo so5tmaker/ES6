@@ -62,7 +62,23 @@
  * @return {boolean}
  */
 var isHappy = function (n) {
+    const nums = [];
+    let result = 0;
+    let s = String(n);
+    while (result !== 1) {
+        for (let i = 0; i < s.length; i++) {
+            result += Math.pow(s[i], 2);
+        }
+        if (result === 1) return true;
+        if (nums.includes(result)) return false;
+        nums.push(result);
+        s = String(result);
+        result = 0;
+    }
 
+    return true;
 };
+console.log(isHappy(19));
+console.log(isHappy(2));
 // @lc code=end
 
