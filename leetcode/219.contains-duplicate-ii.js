@@ -56,8 +56,53 @@
  * @param {number} k
  * @return {boolean}
  */
-var containsNearbyDuplicate = function(nums, k) {
-    
+var containsNearbyDuplicate = function (nums, k) {
+    const n = nums.length;
+
+    if (n === 1) return false;
+
+    let i = 0, j = 1;
+
+    while (i < n && j < n) {
+        if (nums[i] === nums[j] && -(i - j) <= k) return true;
+
+        if (j === n - 1) { i++; j = i; }
+
+        j++;
+    }
+
+    return false;
 };
+console.log(containsNearbyDuplicate([1, 2, 3, 1], k = 3));
+console.log(containsNearbyDuplicate([1, 0, 1, 1], k = 1));
+console.log(containsNearbyDuplicate([1, 2, 3, 1, 2, 3], k = 2));
+
+var containsNearbyDuplicateAi = function (nums, k) {
+    const numIndices = new Map();
+
+    for (let i = 0; i < nums.length; i++) {
+        const num = nums[i];
+
+        // Check if the number is a duplicate within the window
+        if (numIndices.has(num) && i - numIndices.get(num) <= k) {
+            return true;
+        }
+
+        // Store the index of the number
+        numIndices.set(num, i);
+
+        // Remove the index of the number that is outside the window
+        if (i >= k) {
+            numIndices.delete(nums[i - k]);
+        }
+    }
+
+    return false;
+};
+
+console.log(containsNearbyDuplicateAi([1, 2, 3, 1], 3));
+console.log(containsNearbyDuplicateAi([1, 0, 1, 1], 1));
+console.log(containsNearbyDuplicateAi([1, 2, 3, 1, 2, 3], 2));
+
 // @lc code=end
 
