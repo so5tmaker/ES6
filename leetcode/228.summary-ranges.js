@@ -70,8 +70,20 @@
  * @param {number[]} nums
  * @return {string[]}
  */
-var summaryRanges = function(nums) {
-    
+var summaryRanges = function (nums) {
+    nums.sort();
+    const newNums = [];
+
+    for (let i = 1; i < array.length; i++) {
+        const current = nums[i - 1];
+
+        if (current < nums[i]) {
+
+        }
+    }
+
+    return nums;
 };
+console.log(summaryRanges([0, 1, 2, 4, 5, 7]));
 // @lc code=end
 
