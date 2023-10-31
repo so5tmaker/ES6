@@ -73,9 +73,9 @@ var containsNearbyDuplicate = function (nums, k) {
 
     return false;
 };
-console.log(containsNearbyDuplicate([1, 2, 3, 1], k = 3));
-console.log(containsNearbyDuplicate([1, 0, 1, 1], k = 1));
-console.log(containsNearbyDuplicate([1, 2, 3, 1, 2, 3], k = 2));
+// console.log(containsNearbyDuplicate([1, 2, 3, 1], k = 3));
+// console.log(containsNearbyDuplicate([1, 0, 1, 1], k = 1));
+// console.log(containsNearbyDuplicate([1, 2, 3, 1, 2, 3], k = 2));
 
 var containsNearbyDuplicateAi = function (nums, k) {
     const numIndices = new Map();
