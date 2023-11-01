@@ -71,19 +71,27 @@
  * @return {string[]}
  */
 var summaryRanges = function (nums) {
+    const n = nums.length;
     nums.sort();
     const newNums = [];
+    j = 0;
 
-    for (let i = 1; i < array.length; i++) {
+    for (let i = 1; i < n; i++) {
         const current = nums[i - 1];
 
-        if (current < nums[i]) {
+        if (current + 1 < nums[i]) {
+            newNums.push(String(nums[j]) + (j === i - 1 ? '' : '->' + String(current)));
+            j = i === n - 1 ? j : i;
+        }
 
+        if (i === n - 1 && j !== i) {
+            newNums.push(String(nums[i]));
         }
     }
 
-    return nums;
+    return newNums;
 };
 console.log(summaryRanges([0, 1, 2, 4, 5, 7]));
+console.log(summaryRanges([0, 2, 3, 4, 6, 8, 9]));
 // @lc code=end
 
