@@ -7,7 +7,7 @@ class Node {
 
 // The Node class represents a single node in the linked list.
 // It has a constructor that takes in data as a parameter and assigns it to the data property of the node.
-// The next property is initially set to null, indicating that there is no next node.
+// The next property is initially set to null, indicating that there is no (!!!) next node. 
 
 class LinkedList {
     constructor() {
