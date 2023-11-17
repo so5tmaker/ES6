@@ -29,6 +29,27 @@ class LinkedList {
         current.next = newNode; // Set the next pointer of the last node to the new node
     }
 
+    // Method to insert a node at the middle of the linked list
+    insertInMiddle(data) {
+        const newNode = new Node(data);
+
+        if (!this.head || !this.head.next) {
+            this.head = newNode;
+            return;
+        }
+
+        let slow = this.head;
+        let fast = this.head;
+
+        while (fast && fast.next && fast.next.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        newNode.next = slow.next;
+        slow.next = newNode;
+    }
+
     printList() {
         let current = this.head; // Start at the head of the list
         while (current) { // Traverse through the list
