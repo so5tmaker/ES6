@@ -12,6 +12,7 @@ class Node {
 class LinkedList {
     constructor() {
         this.head = null; // Head node of the linked list
+        this.tail = null;
     }
 
     append(data) {
@@ -48,6 +49,21 @@ class LinkedList {
 
         newNode.next = slow.next;
         slow.next = newNode;
+    }
+
+    insertAfter(value, prev) {
+        if (prev === null) return this;
+
+        const newNode = new Node(value);
+
+        newNode.next = prev.next;
+        prev.next = newNode;
+
+        if (newNode.next === null) {
+            this.tail = newNode;
+        }
+
+        return this;
     }
 
     printList() {
