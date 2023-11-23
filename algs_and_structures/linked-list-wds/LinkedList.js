@@ -1,3 +1,10 @@
+class LinkedListNode {
+  constructor(value, next) {
+    this.value = value
+    this.next = next
+  }
+}
+
 class LinkedList {
   constructor() {
     this.head = null
@@ -56,14 +63,7 @@ class LinkedList {
   }
 }
 
-class LinkedListNode {
-  constructor(value, next) {
-    this.value = value
-    this.next = next
-  }
-}
-
-LinkedList.fromValues = function(...values) {
+LinkedList.fromValues = function (...values) {
   const ll = new LinkedList()
   for (let i = values.length - 1; i >= 0; i--) {
     ll.insertAtHead(values[i])
