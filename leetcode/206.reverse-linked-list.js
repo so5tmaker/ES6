@@ -65,7 +65,18 @@
  * @return {ListNode}
  */
 var reverseList = function (head) {
+    let cur = head;
+    let prev = null;
+    let next;
 
+    while (cur !== nul) {
+        next = cur.next;
+        cur.next = prev;
+        prev = cur;
+        cur = next;
+    }
+
+    return prev;
 };
 
 // https://youtu.be/hMnwCgnfND4 - Reverse Linked List Solution Explained with Introduction to Linked Lists - Javascript
