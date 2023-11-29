@@ -69,7 +69,7 @@ var reverseList = function (head) {
     let prev = null;
     let next;
 
-    while (cur !== nul) {
+    while (cur !== null) {
         next = cur.next;
         cur.next = prev;
         prev = cur;
@@ -78,6 +78,14 @@ var reverseList = function (head) {
 
     return prev;
 };
+
+var reverseListEs6 = function (head) {
+    let [prev, current] = [null, head]
+    while (current) {
+        [current.next, prev, current] = [prev, current, current.next]
+    }
+    return prev
+}
 
 // https://youtu.be/hMnwCgnfND4 - Reverse Linked List Solution Explained with Introduction to Linked Lists - Javascript
 // @lc code=end
