@@ -66,29 +66,13 @@
  * @param {ListNode} list2
  * @return {ListNode}
  */
-var mergeTwoLists = function (list1, list2) {
-
-};
-
-// https://leetcode.com/problems/merge-two-sorted-lists/solutions/2705782/js-recursion-with-exlanation/?envType=study-plan-v2&envId=top-interview-150
-var mergeTwoListsRecursion = function (list1, list2) {
-    if (!list1) return list2;
-    else if (!list2) return list1;
-    else if (list1.val <= list2.val) {
-        list1.next = mergeTwoLists(list1.next, list2);
-        return list1;
-    } else {
-        list2.next = mergeTwoLists(list1, list2.next);
-        return list2
-    }
-};
 
 var mergeTwoLists = function (list1, list2) {
     const dummy = new ListNode(-Infinity);
     let prev = dummy;
 
     while (list1 && list2) {
-        if (list1.val<=list2.val) {
+        if (list1.val <= list2.val) {
             prev.next = list1;
             prev = list1;
             list1 = list1.next;
@@ -105,25 +89,18 @@ var mergeTwoLists = function (list1, list2) {
     return dummy.next;
 }
 
-
-// initialize a dummy head node
-    
-// initialize a crtNode variable to keep track of the current node, starting with the dummy head node
-    
-// while there are still nodes to compare in two lists
-    // if value of 2nd node is less than value of 1st node
-        // set the current node's link to l2 node
-        // set the l2 node to l2's next node
-    // else
-        // set the current node's link to l1 node
-        // set the l1 node to l1's next node
-        
-    // move on to the next node
-            
-// if one of the lists no longer have any nodes to compare, point crt's link to the remaining nodes in the other list
-// if both lists are empty, point crt's link to null
-
-// return merged linked list
+// https://leetcode.com/problems/merge-two-sorted-lists/solutions/2705782/js-recursion-with-exlanation/?envType=study-plan-v2&envId=top-interview-150
+var mergeTwoListsRecursion = function (list1, list2) {
+    if (!list1) return list2;
+    else if (!list2) return list1;
+    else if (list1.val <= list2.val) {
+        list1.next = mergeTwoLists(list1.next, list2);
+        return list1;
+    } else {
+        list2.next = mergeTwoLists(list1, list2.next);
+        return list2
+    }
+};
 
 // @lc code=end
 
