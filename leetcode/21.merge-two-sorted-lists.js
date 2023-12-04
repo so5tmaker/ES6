@@ -67,6 +67,51 @@
  * @return {ListNode}
  */
 
+// initialize a dummy head node
+
+// initialize a crtNode variable to keep track of the current node, starting with the dummy head node
+
+// while there are still nodes to compare in two lists
+// if value of 2nd node is less than value of 1st node
+// set the current node's link to l2 node
+// set the l2 node to l2's next node
+// else
+// set the current node's link to l1 node
+// set the l1 node to l1's next node
+
+// move on to the next node
+
+// if one of the lists no longer have any nodes to compare, point crt's link to the remaining nodes in the other list
+// if both lists are empty, point crt's link to null
+
+// return merged linked list
+
+function mergeTwoListsCrt(l1, l2) {
+    let dummy = new ListNode();
+    let crtNode = dummy;
+
+    while (l1 !== null && l2 !== null) {
+        if (l2.val < l1.val) {
+            crtNode.next = l2;
+            l2 = l2.next;
+        } else {
+            crtNode.next = l1;
+            l1 = l1.next;
+        }
+        crtNode = crtNode.next;
+    }
+
+    if (l1 !== null) {
+        crtNode.next = l1;
+    }
+    if (l2 !== null) {
+        crtNode.next = l2;
+    }
+
+    return dummy.next;
+}
+
+
 var mergeTwoLists = function (list1, list2) {
     const dummy = new ListNode(-Infinity);
     let prev = dummy;
@@ -74,13 +119,12 @@ var mergeTwoLists = function (list1, list2) {
     while (list1 && list2) {
         if (list1.val <= list2.val) {
             prev.next = list1;
-            prev = list1;
             list1 = list1.next;
         } else {
             prev.next = list2;
-            prev = list2;
             list2 = list2.next;
         }
+        prev = prev.next;
     }
 
     if (!list1) prev.next = list2;
