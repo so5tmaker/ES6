@@ -12,15 +12,15 @@ class LinkedList {
         }
         let node = this.root
         while (node.next) {
-            node = node.next
+            node = node.next;
         }
         let newNode = new Node(value)
-        node.next = newNode
-        this.size += 1
+        node.next = newNode;
+        this.size += 1;
     }
 
     getSize() {
-        return this.size
+        return this.size;
     }
 
     print() {
