@@ -1,7 +1,7 @@
 class LinkedList {
     constructor() {
-        this.size = 0
-        this.root = null
+        this.size = 0;
+        this.root = null;
     }
 
     add(value) {
@@ -10,7 +10,7 @@ class LinkedList {
             this.size += 1;
             return true;
         }
-        let node = this.root
+        let node = this.root;
         while (node.next) {
             node = node.next;
         }
