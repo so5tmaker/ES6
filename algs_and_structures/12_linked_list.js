@@ -25,12 +25,12 @@ class LinkedList {
 
     print() {
         let result = []
-        let node = this.root
+        let node = this.root;
         while (node) {
             result.push(node.value)
-            node = node.next
+            node = node.next;
         }
-        console.log(result);;
+        console.log(result);
     }
 }
 
