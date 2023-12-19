@@ -27,7 +27,7 @@ class LinkedList {
         let result = []
         let node = this.root;
         while (node) {
-            result.push(node.value)
+            result.push(node.value);
             node = node.next;
         }
         console.log(result);
@@ -36,8 +36,8 @@ class LinkedList {
 
 class Node {
     constructor(value) {
-        this.value = value
-        this.next = null
+        this.value = value;
+        this.next = null;
     }
 }
 
