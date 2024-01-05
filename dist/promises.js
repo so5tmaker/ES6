@@ -17,7 +17,7 @@ function getVisa(visa) {
         // resolve(visa);
         setTimeout(function () {
             return resolve(visa);
-        }, 2000);
+        }, 5000);
     });
 }
 
