@@ -25,12 +25,12 @@ function bookHotel(visa) {
     console.log(visa);
     console.log('Бронируем отель');
     // return {};
-    // return new Promise(function(resolve, reject, visa){
-    //     // reject('There are no places');
-    //     resolve(visa);
-    // });
+    return new Promise(function (resolve, reject, visa) {
+        // reject('There are no places');
+        resolve(visa);
+    });
     // return Promise.reject('There are no places');
-    return Promise.resolve(visa);
+    // return Promise.resolve(visa);
 }
 
 function buyTickets(booking) {
