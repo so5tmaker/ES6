@@ -13,7 +13,7 @@ function getVisa(visa) {
     // return visa;
     return new Promise(function (resolve, reject) {
         // resolve(visa);
-        setTimeout(() => resolve(visa), 2000);
+        setTimeout(() => resolve(visa), 500);
     });
 }
 
@@ -22,8 +22,8 @@ function bookHotel(visa) {
     console.log('Бронируем отель');
     // return {};
     return new Promise(function (resolve, reject, visa) {
-        // reject('There are no places');
-        resolve(visa);
+        reject('There are no places');
+        //     resolve(visa);
     });
     // return Promise.reject('There are no places');
     // return Promise.resolve(visa);
@@ -38,4 +38,4 @@ applyForVisa({})
     .then(getVisa)
     .then(bookHotel)
     .then(buyTickets)
-    .catch(error => console.error(error + 1));
+    .catch(error => console.error(error));
