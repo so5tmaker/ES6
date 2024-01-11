@@ -2,7 +2,7 @@ function applyForVisa(documents) {
     console.log('Обработка заявления...');
     let promise = new Promise((resolve, reject) => {
         setTimeout(function () {
-            Math.random() > 0 ? resolve({}) : reject('В визе отказано: нехватка документов');
+            Math.random() > 0 ? resolve('ВОТ ПОДТВЕРЖДЕНИЕ ВАШЕЙ ВИЗЫ!!!') : reject('В визе отказано: нехватка документов');
         }, 2000);
     });
     return promise;
@@ -22,8 +22,8 @@ function bookHotel(visa) {
     console.log('Бронируем отель');
     // return {};
     return new Promise(function (resolve, reject, visa) {
-        reject('There are no places');
-        //     resolve(visa);
+        // reject('There are no places');
+        resolve(visa);
     });
     // return Promise.reject('There are no places');
     // return Promise.resolve(visa);
