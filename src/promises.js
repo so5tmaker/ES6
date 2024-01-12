@@ -2,7 +2,7 @@ function applyForVisa(documents) {
     console.log('Обработка заявления...');
     let promise = new Promise((resolve, reject) => {
         setTimeout(function () {
-            Math.random() > 0 ? resolve('ВОТ ПОДТВЕРЖДЕНИЕ ВАШЕЙ ВИЗЫ!!!') : reject('В визе отказано: нехватка документов');
+            Math.random() > 0.5 ? resolve('ВОТ ПОДТВЕРЖДЕНИЕ ВАШЕЙ ВИЗЫ!!!') : reject('В визе отказано: нехватка документов');
         }, 2000);
     });
     return promise;
