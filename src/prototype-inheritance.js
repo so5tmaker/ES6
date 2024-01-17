@@ -15,7 +15,7 @@ function Dog(nickName) {
 }
 
 function BobCat(catName) {
-    this.weigth = 30;
+    this.weight = 30;
     this.color = 'orange';
 }
 
