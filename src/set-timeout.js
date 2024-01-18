@@ -16,9 +16,9 @@
 
     // let timer = setTimeout(startTimer, delay);
 
-    for (var i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
         setTimeout(function (i) {
             console.log(i);
-        }, 1000, i); // third parametr in setTimeout
+        }, 1000, i); // third parameter in setTimeout
     };
 })();
