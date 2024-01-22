@@ -64,11 +64,11 @@ var getSalaryWithTax = function getSalaryWithTax(salary, tax) {
 
 var calculateTeamFinanceReport = function calculateTeamFinanceReport(salaries, team) {
     var teamQuantity = getTeamQuantity(team);
-    resultObject = { totalBudgetTeam: 0 };
+    let resultObject = { totalBudgetTeam: 0 };
     teamQuantity.map(function (item) {
-        var _salaries$item$specia = salaries[item.specialization],
-            salary = _salaries$item$specia.salary,
-            tax = _salaries$item$specia.tax;
+        var _salaries$item$special = salaries[item.specialization],
+            salary = _salaries$item$special.salary,
+            tax = _salaries$item$special.tax;
 
         var budget = getSalaryWithTax(salary, tax) * item.quantity;
         resultObject["totalBudget" + item.specialization] = budget;
