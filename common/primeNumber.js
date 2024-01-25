@@ -2,8 +2,9 @@ const isPrime = (n) => {
     if (n <= 1) {
         return false;
     }
-
+    console.log('sqrt:', Math.sqrt(n));
     for (let i = 2; i <= Math.sqrt(n); i++) {
+        console.log('i is', i + ',', 'n % i:', n % i);
         if (n % i === 0) {
             return false;
         }
@@ -22,5 +23,5 @@ const isPrime = (n) => {
 // If we reach the end of the loop without finding any divisors of n, then n must be prime, so we return true.
 // Here is an example usage of the function:
 
-console.log(isPrime(7)); // Output: true
+console.log(isPrime(36)); // Output: true
 console.log(isPrime(10)); // Output: false
