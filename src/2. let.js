@@ -1,6 +1,6 @@
 
 // 1 -- ReferenceError: version is not defined, so 'let' declares variable 
-// 'version' only whithin the if clause scope
+// 'version' only within the if clause scope
 // if (true){
 //     let version = "ES6";
 // }

@@ -1,4 +1,4 @@
-// distructuring object assignment
+// destructuring object assignment
 
 let user = {
     firstName: 'John',
