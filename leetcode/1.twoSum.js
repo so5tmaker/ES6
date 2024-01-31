@@ -21,7 +21,7 @@ console.log(twoSum([3, 5, 8, 13, 7, 12, 3], 6));
 var twoSumBinarySearch = (nums, target) => {
     const items = nums.map((num, index) => ({ num, index }));
     items.sort((a, b) => a.num - b.num);
-
+    console.log('items', items);
     for (let i = 0; i < items.length; i++) {
         const complement = target - items[i].num;
         let left = i + 1;
