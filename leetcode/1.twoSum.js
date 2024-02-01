@@ -51,10 +51,9 @@ console.log(twoSumBinarySearch([3, 5, 8, 13, 7, 12, 3], 6));
 var twoSumMarkersSearch = (nums, target) => {
     // Create an array of objects with value and original index
     const items = nums.map((value, index) => ({ value, index }));
-
     // Sort the array based on the values
     items.sort((a, b) => a.value - b.value);
-
+    console.log('items', items);
     let left = 0;
     let right = nums.length - 1;
 
