@@ -67,7 +67,9 @@ var longestCommonPrefix = function (strs) {
         for (let j = 0; j < str.length; j++) {
             newPref = str.substring(0, j + 1);
             for (let k = i + 1; k < strs.length; k++) {
-                if (newPref === strs[k].substring(0, j + 1)) {
+                const kPref = strs[k].substring(0, j + 1);
+
+                if (newPref === kPref) {
                     prefix = newPref;
                 } else {
                     return prefix.substring(0, j);
@@ -78,6 +80,10 @@ var longestCommonPrefix = function (strs) {
 
     return prefix;
 };
+console.log(longestCommonPrefix(["flower", "flow", "flight"]));
+console.log(longestCommonPrefix(["dog", "racecar", "car"]));
+console.log(longestCommonPrefix(["reflower", "flow", "flight"]));
+console.log(longestCommonPrefix(["a"]));
 
 var longestCommonPrefix1 = function (strs) {
     if (strs.length === 0) {
@@ -105,11 +111,6 @@ var longestCommonPrefix1 = function (strs) {
     // If we've reached this point, the entire reference string is the prefix.
     return reference;
 };
-
-console.log(longestCommonPrefix(["flower", "flow", "flight"]));
-console.log(longestCommonPrefix(["dog", "racecar", "car"]));
-console.log(longestCommonPrefix(["reflower", "flow", "flight"]));
-console.log(longestCommonPrefix(["a"]));
 
 console.log(longestCommonPrefix1(["flower", "flow", "flight"]));
 console.log(longestCommonPrefix1(["dog", "racecar", "car"]));
