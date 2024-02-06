@@ -85,7 +85,7 @@ console.log(longestCommonPrefix(["dog", "racecar", "car"]));
 console.log(longestCommonPrefix(["reflower", "flow", "flight"]));
 console.log(longestCommonPrefix(["a"]));
 
-var longestCommonPrefix1 = function (strs) {
+var longestCommonPrefixSort = function (strs) {
     if (strs.length === 0) {
         return "";
     }
@@ -112,9 +112,9 @@ var longestCommonPrefix1 = function (strs) {
     return reference;
 };
 
-console.log(longestCommonPrefix1(["flower", "flow", "flight"]));
-console.log(longestCommonPrefix1(["dog", "racecar", "car"]));
-console.log(longestCommonPrefix1(["reflower", "flow", "flight"]));
-console.log(longestCommonPrefix1(["a"]));
+console.log(longestCommonPrefixSort(["flower", "flow", "flight"]));
+console.log(longestCommonPrefixSort(["dog", "racecar", "car"]));
+console.log(longestCommonPrefixSort(["reflower", "flow", "flight"]));
+console.log(longestCommonPrefixSort(["a"]));
 // @lc code=end
 
