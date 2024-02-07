@@ -62,28 +62,31 @@
  * @return {boolean}
  */
 var isValidMy = function (s) {
-    n = s.length - 1;
+    if (s.length === 0) return false;
 
-    if (n === 0) return false;
+    const stack = [];
+    const parentheses = { '(': ')', '[': ']', '{': '}' };
 
-    const parentheses = { '(': ')', ')': '(', '[': ']', ']': '[', '{': '}', '}': '{', }
-
-    for (let i = 0; i < n; i++) {
+    for (let i = 0; i < s.length; i++) {
         const element = s[i];
-        if (element === parentheses[s[i + 1]]) {
-            i++;
-            continue;
-        }
-        if (element === parentheses[s[n - i]]) {
-            continue;
-        }
-        if (element !== parentheses[s[i + 1]] || element !== parentheses[s[n - i]]) {
-            return false;
+        if (parentheses[element]) {
+            stack.push(element);
+        } else {
+            const topElement = stack.pop();
+            if (parentheses[topElement] !== element) {
+                return false;
+            }
         }
     }
 
-    return true;
+    return stack.length === 0;
 };
+console.log(isValidMy("()"));
+console.log(isValidMy("()[]{}"));
+console.log(isValidMy("(]"));
+console.log(isValidMy("{[]}"));
+console.log(isValidMy("(){}}{"));
+console.log('*******************');
 
 function isValid(s) {
     const stack = []; // Create an empty array to serve as a stack for opening brackets
