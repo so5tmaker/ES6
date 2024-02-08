@@ -69,10 +69,10 @@ var isValidMy = function (s) {
 
     for (let i = 0; i < s.length; i++) {
         const element = s[i];
-        if (parentheses[element]) {
-            stack.push(element);
+        if (parentheses[element]) { // if such element exists in parentheses it means that is an open parenthesis 
+            stack.push(element); // add an open parenthesis
         } else {
-            const topElement = stack.pop();
+            const topElement = stack.pop(); // remove the last element from an array and return it, if the array is empty, undefined is returned and the array is not modified.
             if (parentheses[topElement] !== element) {
                 return false;
             }
@@ -81,6 +81,7 @@ var isValidMy = function (s) {
 
     return stack.length === 0;
 };
+console.log(isValidMy("([{([{}])}])"));
 console.log(isValidMy("()"));
 console.log(isValidMy("()[]{}"));
 console.log(isValidMy("(]"));
