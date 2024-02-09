@@ -1,19 +1,30 @@
-let c = '(())()';
-let count = 0;
-for (let i = 0; i < c.length; i++) {
-    if (c[i] == '(') {
-        count++;
+
+const validParentheses = (s) => {
+    const stack = [];
+    const map = {
+        '(': ')',
+        '{': '}',
+        '[': ']'
+    };
+
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] in map) {
+            stack.push(s[i]);
+        } else {
+            const last = stack.pop();
+            if (s[i] !== map[last]) {
+                return false; // Unmatched closing parenthesis
+            }
+        }
     }
-    if (c[i] == ')') {
-        count--;
-    }
-    if (count < 0) {
-        break;
-    }
+
+    return stack.length === 0; // Return false if there are unmatched opening parentheses
 }
-if (count != 0) {
-    console.log(false);
-} else {
-    console.log(true);
-}
+console.log(validParentheses('(())()'));
+console.log(validParentheses('()'));
+console.log(validParentheses('()[]{}'));
+console.log(validParentheses('(]'));
+console.log(validParentheses('{[]}'));
+console.log(validParentheses('(){}}{'));
+
 
