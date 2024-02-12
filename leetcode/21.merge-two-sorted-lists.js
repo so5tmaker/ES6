@@ -86,6 +86,8 @@
 
 // return merged linked list
 
+const ListNode = require('../algs_and_structures/linked-list-wds/LinkedList.js');
+
 function mergeTwoListsCrt(l1, l2) {
     let dummy = new ListNode();
     let crtNode = dummy;
@@ -148,3 +150,9 @@ var mergeTwoListsRecursion = function (list1, list2) {
 
 // @lc code=end
 
+console.log(mergeTwoListsRecursion([1, 2, 13, 14], [2, 4, 14, 34, 25]));
+console.log(mergeTwoListsRecursion([7, 11, 18, 89], [89, 56, 35, 27]));
+console.log(mergeTwoListsRecursion([0, 189, 1, 29], []));
+console.log(mergeTwoListsRecursion([7, 10, 59, 19], [12, 10, 66, 88]));
+console.log(mergeTwoListsRecursion([], [133, 100, 55, 17]));
+console.log(mergeTwoListsRecursion([9, 10, 32, 54], [12, 256, 99, 333]));
