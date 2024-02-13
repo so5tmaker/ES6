@@ -86,33 +86,47 @@
 
 // return merged linked list
 
-const ListNode = require('../algs_and_structures/linked-list-wds/LinkedList.js');
+// const ListNode = require('../algs_and_structures/linked-list-wds/LinkedList.js');
 
-function mergeTwoListsCrt(l1, l2) {
-    let dummy = new ListNode();
-    let crtNode = dummy;
-
-    while (l1 !== null && l2 !== null) {
-        if (l2.val < l1.val) {
-            crtNode.next = l2;
-            l2 = l2.next;
-        } else {
-            crtNode.next = l1;
-            l1 = l1.next;
-        }
-        crtNode = crtNode.next;
-    }
-
-    if (l1 !== null) {
-        crtNode.next = l1;
-    }
-    if (l2 !== null) {
-        crtNode.next = l2;
-    }
-
-    return dummy.next;
+function ListNode(val, next) {
+    this.val = (val === undefined ? 0 : val)
+    this.next = (next === undefined ? null : next)
 }
 
+const list1 = new ListNode(1, 2);
+list1.next = new ListNode(4);
+// list1.next.next = new ListNode(4);
+
+const list2 = new ListNode(1, 3);
+list2.next = new ListNode(4);
+// list2.next.next = new ListNode(4);
+
+// function mergeTwoListsCrt(l1, l2) {
+//     let dummy = new ListNode();
+//     let crtNode = dummy;
+
+//     while (l1 !== null && l2 !== null) {
+//         if (l2.val < l1.val) {
+//             crtNode.next = l2;
+//             l2 = l2.next;
+//         } else {
+//             crtNode.next = l1;
+//             l1 = l1.next;
+//         }
+//         crtNode = crtNode.next;
+//     }
+
+//     if (l1 !== null) {
+//         crtNode.next = l1;
+//     }
+//     if (l2 !== null) {
+//         crtNode.next = l2;
+//     }
+
+//     return dummy.next;
+// }
+// console.log(mergeTwoListsCrt(list1, list2));
+// console.log('*******************');
 
 var mergeTwoLists = function (list1, list2) {
     const dummy = new ListNode(-Infinity);
@@ -135,24 +149,22 @@ var mergeTwoLists = function (list1, list2) {
     return dummy.next;
 }
 
+console.log(mergeTwoLists(list1, list2));
+console.log('*******************');
+
 // https://leetcode.com/problems/merge-two-sorted-lists/solutions/2705782/js-recursion-with-exlanation/?envType=study-plan-v2&envId=top-interview-150
-var mergeTwoListsRecursion = function (list1, list2) {
-    if (!list1) return list2;
-    else if (!list2) return list1;
-    else if (list1.val <= list2.val) {
-        list1.next = mergeTwoLists(list1.next, list2);
-        return list1;
-    } else {
-        list2.next = mergeTwoLists(list1, list2.next);
-        return list2
-    }
-};
+// var mergeTwoListsRecursion = function (list1, list2) {
+//     if (!list1) return list2;
+//     else if (!list2) return list1;
+//     else if (list1.val <= list2.val) {
+//         list1.next = mergeTwoLists(list1.next, list2);
+//         return list1;
+//     } else {
+//         list2.next = mergeTwoLists(list1, list2.next);
+//         return list2
+//     }
+// };
+// console.log(mergeTwoListsRecursion(list1, list2));
+// console.log('*******************');
 
 // @lc code=end
-
-console.log(mergeTwoListsRecursion([1, 2, 13, 14], [2, 4, 14, 34, 25]));
-console.log(mergeTwoListsRecursion([7, 11, 18, 89], [89, 56, 35, 27]));
-console.log(mergeTwoListsRecursion([0, 189, 1, 29], []));
-console.log(mergeTwoListsRecursion([7, 10, 59, 19], [12, 10, 66, 88]));
-console.log(mergeTwoListsRecursion([], [133, 100, 55, 17]));
-console.log(mergeTwoListsRecursion([9, 10, 32, 54], [12, 256, 99, 333]));
