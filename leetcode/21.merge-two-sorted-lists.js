@@ -88,18 +88,17 @@
 
 // const ListNode = require('../algs_and_structures/linked-list-wds/LinkedList.js');
 
+
+// * Input: list1 = [1,2,4], list2 = [1,3,4]
+// * Output: [1,1,2,3,4,4]
+
 function ListNode(val, next) {
     this.val = (val === undefined ? 0 : val)
     this.next = (next === undefined ? null : next)
 }
 
-const list1 = new ListNode(1, 2);
-list1.next = new ListNode(4);
-// list1.next.next = new ListNode(4);
-
-const list2 = new ListNode(1, 3);
-list2.next = new ListNode(4);
-// list2.next.next = new ListNode(4);
+const list1 = new ListNode(1, new ListNode(2, new ListNode(4)));
+const list2 = new ListNode(1, new ListNode(3, new ListNode(4)));
 
 // function mergeTwoListsCrt(l1, l2) {
 //     let dummy = new ListNode();
@@ -148,8 +147,11 @@ var mergeTwoLists = function (list1, list2) {
 
     return dummy.next;
 }
-
-console.log(mergeTwoLists(list1, list2));
+const node = mergeTwoLists(list1, list2)
+console.log(node);
+console.log(node.next);
+console.log(node.next.next);
+console.log(node.next.next.next);
 console.log('*******************');
 
 // https://leetcode.com/problems/merge-two-sorted-lists/solutions/2705782/js-recursion-with-exlanation/?envType=study-plan-v2&envId=top-interview-150
