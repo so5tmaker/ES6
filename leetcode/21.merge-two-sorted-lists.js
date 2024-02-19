@@ -100,58 +100,27 @@ function ListNode(val, next) {
 const list1 = new ListNode(1, new ListNode(2, new ListNode(4)));
 const list2 = new ListNode(1, new ListNode(3, new ListNode(4)));
 
-// function mergeTwoListsCrt(l1, l2) {
-//     let dummy = new ListNode();
-//     let crtNode = dummy;
+function mergeTwoListsCrt(l1, l2) {
+    let dummy = new ListNode();
+    let crtNode = dummy;
 
-//     while (l1 !== null && l2 !== null) {
-//         if (l2.val < l1.val) {
-//             crtNode.next = l2;
-//             l2 = l2.next;
-//         } else {
-//             crtNode.next = l1;
-//             l1 = l1.next;
-//         }
-//         crtNode = crtNode.next;
-//     }
-
-//     if (l1 !== null) {
-//         crtNode.next = l1;
-//     }
-//     if (l2 !== null) {
-//         crtNode.next = l2;
-//     }
-
-//     return dummy.next;
-// }
-// console.log(mergeTwoListsCrt(list1, list2));
-// console.log('*******************');
-
-var mergeTwoLists = function (list1, list2) {
-    const dummy = new ListNode(-Infinity);
-    let prev = dummy;
-
-    while (list1 && list2) {
-        if (list1.val <= list2.val) {
-            prev.next = list1;
-            list1 = list1.next;
+    while (l1 && l2) {
+        if (l2.val < l1.val) {
+            crtNode.next = l2;
+            l2 = l2.next;
         } else {
-            prev.next = list2;
-            list2 = list2.next;
+            crtNode.next = l1;
+            l1 = l1.next;
         }
-        prev = prev.next;
+        crtNode = crtNode.next;
     }
 
-    if (!list1) prev.next = list2;
-    if (!list2) prev.next = list1;
+    if (l1) crtNode.next = l1;
+    if (l2) crtNode.next = l2;
 
     return dummy.next;
 }
-const node = mergeTwoLists(list1, list2)
-console.log(node);
-console.log(node.next);
-console.log(node.next.next);
-console.log(node.next.next.next);
+console.log(mergeTwoListsCrt(list1, list2));
 console.log('*******************');
 
 // https://leetcode.com/problems/merge-two-sorted-lists/solutions/2705782/js-recursion-with-exlanation/?envType=study-plan-v2&envId=top-interview-150
