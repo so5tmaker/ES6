@@ -112,6 +112,10 @@ function mergeTwoListsCrt(l1, l2) {
             crtNode.next = l1;
             l1 = l1.next;
         }
+        console.log('l1', JSON.stringify(l1));
+        console.log('*******************');
+        console.log('l2', JSON.stringify(l2));
+        console.log('*******************');
         crtNode = crtNode.next;
         console.log('crtNode', JSON.stringify(crtNode));
         console.log('*******************');
@@ -126,8 +130,8 @@ console.log('list1', JSON.stringify(list1));
 console.log('*******************');
 console.log('list2', JSON.stringify(list2));
 console.log('*******************');
-console.log(JSON.stringify(mergeTwoListsCrt(list1, list2)));
-console.log('*******************');
+console.log('mergeTwoListsCrt', JSON.stringify(mergeTwoListsCrt(list1, list2)));
+console.log('******************* mergeTwoListsCrt  *******************');
 
 // https://leetcode.com/problems/merge-two-sorted-lists/solutions/2705782/js-recursion-with-exlanation/?envType=study-plan-v2&envId=top-interview-150
 var mergeTwoListsRecursion = function (list1, list2) {
