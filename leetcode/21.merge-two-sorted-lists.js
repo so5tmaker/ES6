@@ -103,7 +103,8 @@ const list2 = new ListNode(1, new ListNode(3, new ListNode(4)));
 function mergeTwoListsCrt(l1, l2) {
     let dummy = new ListNode();
     let crtNode = dummy;
-
+    console.log('dummy', JSON.stringify(dummy));
+    console.log('******************* dummy  *******************');
     while (l1 && l2) {
         if (l2.val < l1.val) {
             crtNode.next = l2;
@@ -119,11 +120,14 @@ function mergeTwoListsCrt(l1, l2) {
         crtNode = crtNode.next;
         console.log('crtNode', JSON.stringify(crtNode));
         console.log('*******************');
+        console.log('dummy', JSON.stringify(dummy));
+        console.log('******************* dummy  *******************');
     }
 
     if (l1) crtNode.next = l1;
     if (l2) crtNode.next = l2;
-
+    console.log('dummy', JSON.stringify(dummy));
+    console.log('******************* dummy  *******************');
     return dummy.next;
 }
 console.log('list1', JSON.stringify(list1));
