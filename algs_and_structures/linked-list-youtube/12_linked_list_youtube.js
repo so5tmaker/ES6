@@ -51,39 +51,6 @@ class LinkedList {
         return this.toArray().map(node => node.toString()).toString();
     }
 
-    size() {
-        let count = 0;
-        let node = this.head;
-        while (node) {
-            count++;
-            node = node.next
-        }
-        return count;
-    }
-
-    clear() {
-        this.head = null;
-    }
-
-    getLast() {
-        let lastNode = this.head;
-        if (lastNode) {
-            while (lastNode.next) {
-                lastNode = lastNode.next
-            }
-        }
-        return lastNode
-    }
-
-    getFirst() {
-        return this.head;
-    }
 }
 
-const list = new LinkedList();
-
-list.append('a').append('b').append('c');
-
-console.log('list', list.toString());
-
-console.log(list.size());
+module.exports = { LinkedList };
