@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1709171075538" clover="3.2.0">
+  <project timestamp="1709171075538" name="All files">
+    <metrics statements="21" coveredstatements="21" conditionals="5" coveredconditionals="5" methods="7" coveredmethods="7" elements="33" coveredelements="33" complexity="0" loc="21" ncloc="21" packages="1" files="1" classes="1"/>
+    <file name="12_linked_list_youtube.js" path="/Users/softmaker/Documents/WebDeveloping/CodeDojo/ES6/algs_and_structures/linked-list-youtube/12_linked_list_youtube.js">
+      <metrics statements="21" coveredstatements="21" conditionals="5" coveredconditionals="5" methods="7" coveredmethods="7"/>
+      <line num="6" count="5" type="stmt"/>
+      <line num="7" count="5" type="stmt"/>
+      <line num="11" count="5" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="22" count="5" type="stmt"/>
+      <line num="24" count="5" type="cond" truecount="4" falsecount="0"/>
+      <line num="25" count="1" type="stmt"/>
+      <line num="26" count="1" type="stmt"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="31" count="4" type="stmt"/>
+      <line num="32" count="4" type="stmt"/>
+      <line num="34" count="4" type="stmt"/>
+      <line num="38" count="1" type="stmt"/>
+      <line num="40" count="1" type="stmt"/>
+      <line num="42" count="1" type="stmt"/>
+      <line num="43" count="5" type="stmt"/>
+      <line num="44" count="5" type="stmt"/>
+      <line num="47" count="1" type="stmt"/>
+      <line num="51" count="5" type="stmt"/>
+      <line num="56" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
