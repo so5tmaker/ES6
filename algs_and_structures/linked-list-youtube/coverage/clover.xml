@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1709171075538" clover="3.2.0">
-  <project timestamp="1709171075538" name="All files">
+<coverage generated="1709264615460" clover="3.2.0">
+  <project timestamp="1709264615460" name="All files">
     <metrics statements="21" coveredstatements="21" conditionals="5" coveredconditionals="5" methods="7" coveredmethods="7" elements="33" coveredelements="33" complexity="0" loc="21" ncloc="21" packages="1" files="1" classes="1"/>
     <file name="12_linked_list_youtube.js" path="/Users/softmaker/Documents/WebDeveloping/CodeDojo/ES6/algs_and_structures/linked-list-youtube/12_linked_list_youtube.js">
       <metrics statements="21" coveredstatements="21" conditionals="5" coveredconditionals="5" methods="7" coveredmethods="7"/>
