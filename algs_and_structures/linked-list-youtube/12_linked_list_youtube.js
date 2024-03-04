@@ -1,5 +1,5 @@
 // Связный список (Linked List). Структуры данных | Реализация на JS
-// https://youtu.be/QdCyTTid9-U?t=939
+// https://youtu.be/QdCyTTid9-U?t=1046
 
 class LinkedListNode {
     constructor(value, next = null) {
@@ -30,6 +30,18 @@ class LinkedList {
 
         this.tail.next = newNode;
         this.tail = newNode;
+
+        return this;
+    }
+
+    prepend(value) {
+        const newNode = new LinkedListNode(value, this.head);
+
+        this.head = newNode;
+
+        if (!this.tail) {
+            this.tail = newNode;
+        }
 
         return this;
     }
