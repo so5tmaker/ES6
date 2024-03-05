@@ -20,4 +20,11 @@ describe('Linked List', () => {
         expect(list.tail.value).toBe('x');
     })
 
+    test('Prepend', () => {
+        let list = init();
+
+        expect(list.prepend('x').toString()).toBe('x,a,b,c,d');
+        expect(list.head.value).toBe('x');
+        expect(list.tail.value).toBe('d');
+    })
 })
