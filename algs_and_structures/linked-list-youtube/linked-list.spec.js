@@ -27,4 +27,13 @@ describe('Linked List', () => {
         expect(list.head.value).toBe('x');
         expect(list.tail.value).toBe('d');
     })
+
+    test('Prepend in empty list', () => {
+        const list = new LinkedList();
+
+        expect(list.prepend('x').toString()).toBe('x');
+        expect(list.head.value).toBe('x');
+        expect(list.tail.value).toBe('x');
+    })
+
 })
