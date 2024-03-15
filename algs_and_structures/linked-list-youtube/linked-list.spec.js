@@ -42,4 +42,13 @@ describe('Linked List', () => {
         expect(list.find('d').toString()).toBe('d');
         expect(list.find('x')).toBe(null);
     })
+
+    test('Delete', () => {
+        let list = init();
+
+        expect(list.delete('b').toString()).toBe('b');
+        expect(list.toString()).toBe('a,c,d');
+        expect(list.delete('a').toString()).toBe('a');
+        expect(list.head.value).toBe('c');
+    })
 })
