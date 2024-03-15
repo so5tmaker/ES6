@@ -6,8 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node leetcode/21.merge-two-sorted-lists.js",
-    "test": "node algs_and_structures/linked-list-youtube/linked-list.spec.js"
+    "start": "node yandex/B.Застёжка-молния.js"
   },
   "keywords": [],
   "author": "",
