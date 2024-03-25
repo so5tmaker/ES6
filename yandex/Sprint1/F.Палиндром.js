@@ -26,12 +26,21 @@ function readArray() {
     return _inputLines[_curLine++];
 }
 
+const lowerCase = (letter) => letter.toLowerCase();
+
 function solve() {
-    const textLength = readNumber();
     const text = readArray();
+    const re = /[A-Za-z0-9]/g;
 
-    const [answer] = text.trim().split(' ').sort((a, b) => b.length - a.length);
+    let answer = '', initial = '';
 
-    console.log(answer);
-    console.log(answer.length);
+    for (let i = 0; i < text.length; i++) {
+        initial += lowerCase(text[i]).search(re) > -1 ? lowerCase(text[i]) : '';
+    }
+
+    for (let i = text.length - 1; i >= 0; i--) {
+        answer += lowerCase(text[i]).search(re) > -1 ? lowerCase(text[i]) : '';
+    }
+
+    console.log(answer === initial ? 'True' : "False");
 }
