@@ -1,3 +1,5 @@
+// https://contest.yandex.ru/contest/22450/run-report/110654240/
+
 const _readline = require('readline');
 
 const _reader = _readline.createInterface({
@@ -25,34 +27,24 @@ function readNumber() {
     return Number(_inputLines[_curLine++]);
 }
 
-const minPosition = (current, empties) => {
-    if (empties.length === 1) return Math.abs(empties[0] - current);
-
-    let minPosition = 0;
-    for (i = 0; i < empties.length - 1; i++) {
-        minPosition = Math.min(Math.abs(empties[i] - current), Math.abs(empties[i + 1] - current))
-    }
-
-    return minPosition;
-}
-
-const getString = (i, str) => i === 0 ? `${str}` : ` ${str}`;
-
 function solve() {
     const length = readNumber();
     const houses = readNumberArray();
-    const empties = [];
+    const distances = new Array(length).fill(Infinity);
 
-    let answer = '';
+    for (let i = 0, lastEmpty = -1; i < length; i++) {
+        if (houses[i] === 0) lastEmpty = i;
 
-    for (i = 0; i < length; i++)
-        if (houses[i] === 0) empties.push(i);
-
-    for (let i = 0; i < length; i++) {
-        if (houses[i] === 0) { answer += getString(i, '0'); continue; }
-
-        answer += getString(i, minPosition(i, empties));
+        if (lastEmpty !== -1)
+            distances[i] = Math.min(distances[i], i - lastEmpty);
     }
 
-    console.log(answer);
+    for (let i = length - 1, lastEmpty = -1; i >= 0; i--) {
+        if (houses[i] === 0) lastEmpty = i;
+
+        if (lastEmpty !== -1)
+            distances[i] = Math.min(distances[i], lastEmpty - i);
+    }
+
+    console.log(distances.join(' '));
 }
