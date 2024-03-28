@@ -1,4 +1,4 @@
-// https://contest.yandex.ru/contest/22450/run-report/110697263/
+// https://contest.yandex.ru/contest/22450/run-report/110729484/
 
 const _readline = require('readline');
 
@@ -18,16 +18,16 @@ _reader.on('line', line => {
 // Когда ввод закончится, будет вызвана функция solve.
 process.stdin.on('end', solve);
 
-function readStringArray() {
+function readStringArray(size) {
     const symbols = [];
 
-    for (let k = 0; k < 4; k++) {
+    for (let k = 0; k < size; k++) {
         const chars = _inputLines[_curLine++];
 
-        for (let l = 0; l < 4; l++) {
+        for (let l = 0; l < size; l++) {
             if (chars[l] === '.') continue;
 
-            symbols.push(chars[l]);
+            symbols.push(Number(chars[l]));
         }
     }
 
@@ -39,10 +39,11 @@ function readNumber() {
 }
 
 function solve() {
+    const size = 4;
     const quantity = readNumber();
-    const symbols = readStringArray();
+    const symbols = readStringArray(size);
 
-    let score = 0, length = 9, digitsMap = {};
+    let score = 0, length = 9, digitsMap = [];
 
     for (let i = 0; i < symbols.length; i++) {
         const symbol = symbols[i];
