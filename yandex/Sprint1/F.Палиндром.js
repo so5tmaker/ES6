@@ -16,11 +16,6 @@ _reader.on('line', line => {
 // Когда ввод закончится, будет вызвана функция solve.
 process.stdin.on('end', solve);
 
-// Функция парсит число из очередной строки массива _inputLines
-// и сдвигает указатель на единицу вперёд.
-function readNumber() {
-    return Number(_inputLines[_curLine++]);
-}
 
 function readArray() {
     return _inputLines[_curLine++];

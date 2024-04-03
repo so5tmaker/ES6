@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node yandex/Sprint2/C.Нелюбимое-дело.js"
+    "start": "node yandex/Sprint2/F.Стек-Max.js"
   },
   "keywords": [],
   "author": "",
