@@ -1,6 +1,6 @@
 
 /*
-https://contest.yandex.ru/contest/22781/run-report/111594894/
+https://contest.yandex.ru/contest/22781/run-report/111734002/
 
 -- ПРИНЦИП РАБОТЫ --
 Я реализовал дек (двусторонюю очередь) с помощью кольцевого буфера на массиве.
@@ -42,6 +42,19 @@ const _reader = _readline.createInterface({
 });
 
 const _inputLines = [];
+const ERROR = 'error';
+const PUSH_FRONT = 'push_front';
+const PUSH_BACK = 'push_back';
+const POP_FRONT = 'pop_front';
+const POP_BACK = 'pop_back';
+const commands = {
+    [PUSH_FRONT]: 'pushFront',
+    [PUSH_BACK]: 'pushBack',
+    [POP_FRONT]: 'popFront',
+    [POP_BACK]: 'popBack',
+}
+const printCommands = [POP_FRONT, POP_BACK];
+const errorCodes = [ERROR];
 let _curLine = 0;
 
 // Установим callback на считывание строки - так мы получим
@@ -60,21 +73,20 @@ function readNumber() {
 }
 
 function readStringArray(quantity, size) {
-    let commands = '';
-    const printCommands = ['pop_front', 'pop_back'];
-    const errorCodes = ['error'];
+    let result = '';
 
     const deque = new MyDeque(size);
 
     for (let k = 0; k < quantity; k++) {
         const [command, value] = _inputLines[_curLine++].split(' ');
+        const currentCommand = commands[command];
 
-        const result = deque[command](value);
+        const response = deque[currentCommand](value);
 
-        if (printCommands.includes(command) || errorCodes.includes(result)) commands += commands ? `\n${result}` : result;
+        if (printCommands.includes(command) || errorCodes.includes(response)) result += result ? `\n${response}` : response;
     }
 
-    return commands;
+    return result;
 }
 
 class MyDeque {
@@ -86,28 +98,32 @@ class MyDeque {
         this.size = 0;
     }
 
+    isFull() {
+        return this.size >= this.maxSize;
+    }
+
     empty() {
         return this.size === 0;
     }
 
-    push_front(value) {
-        if (this.size >= this.maxSize) return 'error';
+    pushFront(value) {
+        if (this.isFull()) return ERROR;
 
         this.head = (this.head - 1 + this.maxSize) % this.maxSize;
         this.deque[this.head] = value;
         this.size++;
     }
 
-    push_back(value) {
-        if (this.size >= this.maxSize) return 'error';
+    pushBack(value) {
+        if (this.isFull()) return ERROR;
 
         this.deque[this.tail] = value;
         this.tail = (this.tail + 1) % this.maxSize;
         this.size++;
     }
 
-    pop_front() {
-        if (this.empty()) return 'error';
+    popFront() {
+        if (this.empty()) return ERROR;
 
         const value = this.deque[this.head];
         this.head = (this.head + 1) % this.maxSize;
@@ -116,8 +132,8 @@ class MyDeque {
         return value;
     }
 
-    pop_back() {
-        if (this.empty()) return 'error';
+    popBack() {
+        if (this.empty()) return ERROR;
 
         this.tail = (this.tail - 1 + this.maxSize) % this.maxSize;
         const value = this.deque[this.tail];

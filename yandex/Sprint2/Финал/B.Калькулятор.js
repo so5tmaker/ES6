@@ -1,6 +1,6 @@
 
 /*
-https://contest.yandex.ru/contest/22781/run-report/111664425/
+https://contest.yandex.ru/contest/22781/run-report/111734040/
 
 -- ПРИНЦИП РАБОТЫ --
 Я реализовал стек для обработки и вычисления арифметического выражения в постфиксной записи.
@@ -42,10 +42,24 @@ function readArrayString() {
     return _inputLines[_curLine++].split(' ');
 }
 
+class Stack {
+    constructor() {
+        this.items = [];
+    }
+
+    push(item) {
+        this.items.push(item);
+    }
+
+    pop() {
+        return this.items.pop();
+    }
+}
+
 
 function solve() {
     const tokens = readArrayString();
-    const stack = [];
+    const stack = new Stack();
 
     for (let token of tokens) {
         if (!isNaN(token)) {
