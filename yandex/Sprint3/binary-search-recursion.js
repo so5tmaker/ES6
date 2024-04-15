@@ -35,3 +35,4 @@ function binarySearchDescending(arr, x, left, right) {
 const arr1 = [999, 456, 123, 89, 44, 16, 7, 1];
 // изначально мы запускаем двоичный поиск на всей длине массива
 console.log(binarySearchDescending(arr1, 16, 0, arr1.length));
+
