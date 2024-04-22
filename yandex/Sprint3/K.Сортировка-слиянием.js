@@ -3,6 +3,10 @@ function merge(arr, left, mid, right) {
     const leftArr = arr.slice(left, mid);
     const rightArr = arr.slice(mid, right);
 
+    // console.log('Before merge:');
+    // console.log('Left slice:', leftArr);
+    // console.log('Right slice:', rightArr);
+
     let i = 0;
     let j = 0;
     let k = left;
@@ -13,7 +17,8 @@ function merge(arr, left, mid, right) {
 
     // Сливаем два массива, сравнивая элементы
     while (i < leftArr.length && j < rightArr.length) {
-        if (compare(leftArr[i], rightArr[j])) {
+        // if (compare(leftArr[i], rightArr[j])) {
+        if (leftArr[i] <= rightArr[j]) {
             arr[k] = leftArr[i];
             i++;
         } else {
@@ -35,6 +40,10 @@ function merge(arr, left, mid, right) {
         k++;
     }
 
+    // console.log('After merge:');
+    // console.log('Merged array:', arr.slice(left, right));
+    // console.log('-------------------');
+
     return arr;
 }
 
@@ -52,16 +61,18 @@ function merge_sort(array, left, right) {
 // неправильно сортирует отрицательные числа
 
 function test() {
-    var a = '73 -85 -76 59 17 65'.split(' ');
-    var b = merge(a, 0, 3, 6);
-    console.log(b.join(' '));
+    var a = [18, -19, 15, -8, 14, 6, -6, 8, 17];
+    var b = merge(a, 0, 4, a.length);
+    console.log(b);
     var expected = [1, 2, 4, 9, 10, 11];
 
-    var c = '49 67 66 73 -85 -76 59 17 65 85 -16 -16 35 70'.split(' ');
+    var c = [18, -19, 15, -8, 14, 6, -6, 8, 17];
     merge_sort(c, 0, c.length);
-    console.log(c.join(' '));
+    console.log('merge_sort');
+    console.log(c);
     expected = [0, 3, 4, 5, 1, 2];
 }
+
 
 test();
 
