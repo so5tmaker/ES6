@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node yandex/Sprint3/Финал/A.Поиск-в-сломанном-массиве.js"
+    "start": "node yandex/Sprint3/Финал/B.Эффективная-быстрая-сортировка.js"
   },
   "keywords": [],
   "author": "",

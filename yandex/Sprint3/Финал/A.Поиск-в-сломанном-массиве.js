@@ -39,24 +39,24 @@ function readNumber() {
 
 function readNumberArray() { return _inputLines[_curLine++].split(' ').map(i => Number(i)); }
 
-function brokenSearch(arr, k) {
+function brokenSearch(numbers, length, item) {
     let left = 0;
-    let right = arr.length - 1;
+    let right = length - 1;
 
     while (left <= right) {
         const mid = Math.floor((right + left) / 2);
 
-        if (k === arr[mid]) return mid;
+        if (item === numbers[mid]) return mid;
 
         // если левая половина отсортирована
-        if (arr[left] <= arr[mid]) {
+        if (numbers[left] <= numbers[mid]) {
             // если элемент находится в отсортированной левой половине
-            if (arr[left] <= k && k < arr[mid]) { right = mid - 1; }
+            if (numbers[left] <= item && item < numbers[mid]) { right = mid - 1; }
             else { left = mid + 1; }
         } else // если правая половина отсортирована
         {
             // если элемент находится в отсортированной правой половине
-            if (k <= arr[right] && k > arr[mid]) { left = mid + 1; }
+            if (item <= numbers[right] && item > numbers[mid]) { left = mid + 1; }
             else { right = mid - 1; }
         }
 
@@ -70,9 +70,5 @@ function solve() {
     const item = readNumber();
     const numbers = readNumberArray();
 
-    const found = brokenSearch(numbers, item);
-
-    if (found > -1) {
-        console.log(found);
-    } else { console.error("WA"); }
+    brokenSearch(numbers, length, item);
 }
