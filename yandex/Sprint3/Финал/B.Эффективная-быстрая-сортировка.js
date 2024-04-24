@@ -1,5 +1,5 @@
 /*
-https://contest.yandex.ru/contest/23815/run-report/112771159/
+https://contest.yandex.ru/contest/23815/run-report/112776600/
 
 -- ПРИНЦИП РАБОТЫ --
 Я реализовал сортировку по таблице результатов с помощью модифицированной "in-place" быстрой сортировки (англ. quick sort).
@@ -14,7 +14,7 @@ https://contest.yandex.ru/contest/23815/run-report/112771159/
 Мы не используем дополнительную память в in-place quick sort, а только переменные, а значит пространственная сложность составляет O(1).
 */
 
-const _readline = require('readline');
+const _readline = require("readline");
 
 const _reader = _readline.createInterface({
     input: process.stdin
@@ -25,12 +25,12 @@ let _curLine = 0;
 
 // Установим callback на считывание строки - так мы получим
 // все строки из ввода в массиве _inputLines.
-_reader.on('line', line => {
+_reader.on("line", line => {
     _inputLines.push(line);
 });
 
 // Когда ввод закончится, будет вызвана функция solve.
-process.stdin.on('end', solve);
+process.stdin.on("end", solve);
 
 function readNumber() {
     return Number(_inputLines[_curLine++]);
@@ -40,10 +40,20 @@ function readStringArray(size) {
     const info = [];
 
     for (let k = 0; k < size; k++) {
-        info.push(_inputLines[_curLine++].split(' '));
+        info.push(_inputLines[_curLine++].split(" "));
     }
 
     return info;
+}
+
+function compareParticipants(participant, pivotTasks, pivotPenalty, pivotUsername) {
+    const currentUsername = participant[0];
+    const currentTasks = Number(participant[1]);
+    const currentPenalty = Number(participant[2]);
+
+    return (currentTasks > pivotTasks ||
+        (currentTasks === pivotTasks && currentPenalty < pivotPenalty) ||
+        (currentTasks === pivotTasks && currentPenalty === pivotPenalty && currentUsername < pivotUsername));
 }
 
 function partition(info, left, right) {
@@ -54,13 +64,7 @@ function partition(info, left, right) {
     let index = left - 1;
 
     for (let j = left; j < right; j++) {
-        const currentTasks = Number(info[j][1]);
-        const currentPenalty = Number(info[j][2]);
-        const currentUsername = info[j][0];
-
-        if (currentTasks > pivotTasks ||
-            (currentTasks === pivotTasks && currentPenalty < pivotPenalty) ||
-            (currentTasks === pivotTasks && currentPenalty === pivotPenalty && currentUsername < pivotUsername)) {
+        if (compareParticipants(info[j], pivotTasks, pivotPenalty, pivotUsername)) {
             index++;
             [info[index], info[j]] = [info[j], info[index]]; // меняем текущий элемент местами с элементом на позиции index
         }
