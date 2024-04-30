@@ -47,7 +47,7 @@ function solve() {
     const length = readNumber();
     const numbers = readArrayString();
 
-    function key(a, b) {
+    function key(a, b) { // — это лексиграфическая сортировка
         // Сравниваем числа, объединенные как строковые значения, в обратном порядке
         return (a + b) > (b + a);
     }
