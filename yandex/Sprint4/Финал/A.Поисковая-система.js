@@ -1,3 +1,33 @@
+/*
+https://contest.yandex.ru/contest/24414/run-report/113293135/
+
+– ПРИНЦИП РАБОТЫ –
+В начале создается индекс для каждого слова в документах и подсчитывается количество его вхождений в каждый документ. 
+Если одно слово встречается много раз в одном документе, его количество вхождений учитывается соответствующим образом 
+для вычисления релевантности. Затем вычисляется релевантность каждого документа для данного запроса, 
+учитывая только уникальные слова в запросе и количество их вхождений в каждый документ. 
+Перед выводом происходит сортировка документов по убыванию значения релевантности, 
+а затем по возрастанию их идентификаторов в случае равенства релевантности. 
+И в конце, выводятся 5 наиболее релевантных документов.
+
+– ДОКАЗАТЕЛЬСТВО КОРРЕКТНОСТИ –
+Созданный поисковый индекс (хеш-таблица) позволяет быстро находить нужные вхождения количества уникальных слов в каждый документ. 
+Затем с помощью этого индекса корректно вычисляется релевантность каждого документа для данного запроса, 
+учитывая количество вхождений слов в каждый документ, даже если слово встречается несколько раз в одном документе.
+
+– ВРЕМЕННАЯ СЛОЖНОСТЬ –
+Построение индекса имеет временную сложность O(nm), где n - количество документов, m - средняя длина документа. 
+Получение релевантных документов имеет временную сложность O(ql), где q - количество уникальных слов в запросе, 
+l - среднее количество вхождений слова в документ. Сортировка релевантных документов имеет временную сложность O(dlog(d)), 
+где d - количество документов. Итого временная временную сложность поиска O(k(nm + ql + d*log(d))), где k - количество запросов.
+
+– ПРОСТРАНСТВЕННАЯ СЛОЖНОСТЬ –
+Для построения индекса используется дополнительная память O(nm), где n - количество документов, m - средняя длина документа. 
+Для вычисления релевантности используется дополнительная память O(q), где q - количество уникальных слов в запросе. 
+Для сортировки используется дополнительная память O(d), где d - количество документов. 
+Общая пространственная сложность программы может быть оценена как O(nm + q + d).
+*/
+
 const _readline = require('readline');
 
 const _reader = _readline.createInterface({
@@ -41,17 +71,15 @@ function buildIndex(quantity) {
         const wordCount = {};
 
         for (const word of words) {
-            if (!wordCount[word]) {
-                wordCount[word] = 0;
-            }
+            if (!wordCount[word]) wordCount[word] = 0;
+
             wordCount[word]++;
         }
 
         for (const word in wordCount) {
-            if (!index.has(word)) {
-                index.set(word, []);
-            }
-            index.get(word).push({ docId: i + 1, count: wordCount[word] });
+            if (!index.has(word)) index.set(word, []);
+
+            index.get(word).push({ id: i + 1, count: wordCount[word] });
         }
     }
 
@@ -60,45 +88,37 @@ function buildIndex(quantity) {
 
 function getRelevance(documents, query) {
     const words = query.split(' ');
-    const relevanceMap = new Map();
+    const uniqueWords = new Set(words);
+    const map = new Map();
 
-    for (const word of words) {
+    for (const word of uniqueWords) {
         if (!documents.has(word)) continue;
 
         const entries = documents.get(word);
 
         for (const entry of entries) {
-            const { docId, count } = entry;
-            if (!relevanceMap.has(docId)) {
-                relevanceMap.set(docId, 0);
-            }
+            const { id, count } = entry;
 
-            // Consider the count of the word in the document for relevance
-            relevanceMap.set(docId, relevanceMap.get(docId) + count);
+            if (!map.has(id)) map.set(id, 0);
+
+            map.set(id, map.get(id) + count);
         }
     }
 
-    return relevanceMap;
+    return map;
 }
 
+const sortRelevance = (map) => Array.from(map.entries()).sort((a, b) =>
+    a[1] !== b[1] ? b[1] - a[1] : a[0] - b[0]);
+
 function search(index, queries) {
-    const results = [];
-
     for (const query of queries) {
-        const relevanceMap = getRelevance(index, query);
-        const sortedRelevance = Array.from(relevanceMap.entries()).sort((a, b) => {
-            if (a[1] !== b[1]) {
-                return b[1] - a[1];
-            } else {
-                return a[0] - b[0];
-            }
-        });
-
+        const relevance = getRelevance(index, query);
+        const sortedRelevance = sortRelevance(relevance);
         const topResults = sortedRelevance.slice(0, 5).map(entry => entry[0]);
-        results.push(topResults);
-    }
 
-    return results;
+        console.log(topResults.join(' '));
+    }
 }
 
 function solve() {
@@ -107,8 +127,5 @@ function solve() {
     const size = readNumber();
     const queries = readStringArray(size);
 
-    const searchResults = search(index, queries);
-    for (const result of searchResults) {
-        console.log(result.join(' '));
-    }
+    search(index, queries);
 }
