@@ -24,17 +24,17 @@ const _reader = _readline.createInterface({
     input: process.stdin
 });
 
+const END = 'end';
+const LINE = 'line';
+
 const _inputLines = [];
 let _curLine = 0;
 
-// Установим callback на считывание строки - так мы получим
-// все строки из ввода в массиве _inputLines.
-_reader.on('line', line => {
+_reader.on(LINE, line => {
     _inputLines.push(line);
 });
 
-// Когда ввод закончится, будет вызвана функция solve.
-process.stdin.on('end', solve);
+process.stdin.on(END, solve);
 
 function readNumber() {
     return Number(_inputLines[_curLine++]);

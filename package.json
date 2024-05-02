@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node yandex/Sprint4/Финал/A.Поисковая-система.js"
+    "start": "node yandex/Sprint4/Финал/B.Хеш-таблица.js"
   },
   "keywords": [],
   "author": "",
