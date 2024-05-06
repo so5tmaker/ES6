@@ -45,7 +45,7 @@ const LINE = 'line';
 const NONE = 'None';
 const GET = 'get';
 const DELETE = 'delete';
-const SIZE = 100003;
+const SIZE = 100003; // Простое число близкое к 10^5 для уменьшения коллизий
 
 const printCommands = [GET, DELETE];
 const errorCodes = [NONE];
@@ -86,10 +86,12 @@ class HashTable {
         this.buckets = Array.from({ length: this.size }, () => []);
     }
 
+    // Хеш-функция для вычисления индекса в массиве корзин
     hash(key) {
         return (key % this.size + this.size) % this.size;
     }
 
+    // Добавление пары ключ-значение в корзину хэш-таблицы
     put(key, value) {
         const index = this.hash(key);
         const bucket = this.buckets[index];
@@ -102,6 +104,7 @@ class HashTable {
         bucket.push([key, value]);
     }
 
+    // Получение значения по ключу из корзины хэш-таблицы
     get(key) {
         const index = this.hash(key);
         const bucket = this.buckets[index];
@@ -112,6 +115,7 @@ class HashTable {
         return NONE;
     }
 
+    // Удаление ключа из корзины хэш-таблицы
     delete(key) {
         const index = this.hash(key);
         const bucket = this.buckets[index];

@@ -1,70 +1,45 @@
+function merge_sort(arr, left, right) {
+    if (left < right - 1) {
+        var mid = Math.floor((left + right) / 2);
+        merge_sort(arr, left, mid);
+        merge_sort(arr, mid, right);
+        var mergedArray = merge(arr, left, mid, right);
+        for (var i = left; i < right; i++) {
+            arr[i] = mergedArray[i - left];
+        }
+    }
+}
 
 function merge(arr, left, mid, right) {
-    const leftArr = arr.slice(left, mid);
-    const rightArr = arr.slice(mid, right);
+    var leftArray = arr.slice(left, mid);
+    var rightArray = arr.slice(mid, right);
+    var result = [];
 
-    // console.log('Before merge:');
-    // console.log('Left slice:', leftArr);
-    // console.log('Right slice:', rightArr);
-
-    let i = 0;
-    let j = 0;
-    let k = left;
-
-    const compare = (left, right) =>
-        left < 0 && right < 0 ? Math.abs(left) >= Math.abs(right) : left <= right;
-
-
-    // Сливаем два массива, сравнивая элементы
-    while (i < leftArr.length && j < rightArr.length) {
-        // if (compare(leftArr[i], rightArr[j])) {
-        if (leftArr[i] <= rightArr[j]) {
-            arr[k] = leftArr[i];
-            i++;
+    var i = 0, j = 0;
+    while (i < leftArray.length && j < rightArray.length) {
+        if (leftArray[i] <= rightArray[j]) {
+            result.push(leftArray[i++]);
         } else {
-            arr[k] = rightArr[j];
-            j++;
+            result.push(rightArray[j++]);
         }
-        k++;
     }
 
-    // Дописываем оставшиеся элементы из левого и правого массивов
-    while (i < leftArr.length) {
-        arr[k] = leftArr[i];
-        i++;
-        k++;
-    }
-    while (j < rightArr.length) {
-        arr[k] = rightArr[j];
-        j++;
-        k++;
+    while (i < leftArray.length) {
+        result.push(leftArray[i++]);
     }
 
-    // console.log('After merge:');
-    // console.log('Merged array:', arr.slice(left, right));
-    // console.log('-------------------');
+    while (j < rightArray.length) {
+        result.push(rightArray[j++]);
+    }
 
-    return arr;
+    return result;
 }
-
-
-function merge_sort(array, left, right) {
-    if (right - left > 1) {
-        const mid = Math.floor((right + left) / 2);
-        merge_sort(array, left, mid);
-        merge_sort(array, mid, right);
-        merge(array, left, mid, right);
-    }
-}
-// вывод merge_sort: -16 -16 -76 -85 17 35 49 59 65 66 67 70 73 85
-// правильный ответ: -85 -76 -16 -16 17 35 49 59 65 66 67 70 73 85
-// неправильно сортирует отрицательные числа
 
 function test() {
     var a = [18, -19, 15, -8, 14, 6, -6, 8, 17];
-    var b = merge(a, 0, 4, a.length);
+    const b = merge(a, 0, 4, a.length);
     console.log(b);
-    var expected = [1, 2, 4, 9, 10, 11];
+    var expected = [-19, -8, -6, 6, 8, 14, 15, 17, 18];
 
     var c = [18, -19, 15, -8, 14, 6, -6, 8, 17];
     merge_sort(c, 0, c.length);
@@ -72,7 +47,6 @@ function test() {
     console.log(c);
     expected = [0, 3, 4, 5, 1, 2];
 }
-
 
 test();
 
@@ -87,3 +61,4 @@ test();
 // arr = [4, 5, 3, 0, 1, 2], то будут отсортированы только первые четыре элемента, изменённый массив будет выглядеть как
 // arr = [0, 3, 4, 5, 1, 2].
 // Реализуйте эти две функции.
+
