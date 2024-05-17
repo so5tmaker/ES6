@@ -15,3 +15,5 @@ function heapAdd(heap, key) {
     const index = heap.length - 1;
     siftUp(heap, index);
 }
+
+module.exports = { heapAdd }

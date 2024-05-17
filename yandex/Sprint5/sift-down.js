@@ -23,3 +23,5 @@ function popMax(heap) {
     siftDown(heap, 1);
     return result;
 }
+
+module.exports = { popMax }

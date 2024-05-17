@@ -4,6 +4,7 @@ function siftUp(heap, index) {
     }
 
     const parentIndex = Math.floor(index / 2);
+
     if (heap[parentIndex] < heap[index]) {
         [heap[parentIndex], heap[index]] = [heap[index], heap[parentIndex]];
         return siftUp(heap, parentIndex);
