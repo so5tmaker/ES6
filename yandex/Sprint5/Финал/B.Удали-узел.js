@@ -1,5 +1,5 @@
 /*
-https://contest.yandex.ru/contest/24810/run-report/114357608/
+https://contest.yandex.ru/contest/24810/run-report/114396954/
 
 -- ПРИНЦИП РАБОТЫ --
 Я реализовал удаление в бинарном дереве так, чтобы дерево осталось корректным бинарным деревом поиска.
@@ -19,7 +19,6 @@ https://contest.yandex.ru/contest/24810/run-report/114357608/
 потому что мы выполняем удаление узла без создания дополнительной структуры данных.
 */
 
-// if (process.env.REMOTE_JUDGE !== 'true') {
 class Node {
     constructor(value, left = null, right = null) {
         this.value = value;
@@ -27,77 +26,110 @@ class Node {
         this.right = right;
     }
 }
-// }
 
-function remove(root, key) {
-    let current = root;
-    let parent = null;
+// Функция для поиска узла с заданным значением и его родителя
+function findNodeAndParent(root, key) {
+    let parent = null, current = root;
 
-    // Находим узел с заданным ключом и его родителя
-    while (current !== null && current.value !== key) {
+    while (current && current.value !== key) {
         parent = current;
-
-        if (key < current.value) current = current.left; else current = current.right;
+        current = key < current.value ? current.left : current.right;
     }
 
-    // Если узел не найден, возвращаем исходное дерево
-    if (current === null) return root;
+    return { parent, node: current };
+}
 
-    // Удаляем узел из дерева
-    if (current.left === null && current.right === null) {
-        // Если у удаляемого узла нет потомков
-        if (parent === null) return null; // Удаляем корневой узел
+// Функция для поиска минимального узла в правом поддереве и его родителя
+function findMinNodeAndParent(node) {
+    let parent = node;
 
-        if (parent.left === current) parent.left = null; else parent.right = null;
+    node = node.right;
 
+    while (node.left) {
+        parent = node;
+        node = node.left;
     }
 
-    if (current.left === null || current.right === null) {
-        // Если у удаляемого узла есть только один потомок
-        let child = current.left !== null ? current.left : current.right;
+    return { parent, node };
+}
 
-        if (parent === null) return child; // Удаляем корневой узел
+// Функция удаления узла из дерева
+function removeNode(root, parent, node) {
+    if (!node.left || !node.right) { // если у узла нет одного из потомков
+        const child = node.left || node.right;
 
-        if (parent.left === current) parent.left = child; else parent.right = child;
+        if (node === root) return child; // если удаляемый узел — корень дерева
 
-    } else {
-        // Если у удаляемого узла два потомка
-        let successor = current.right;
-        let successorParent = current;
+        // обновление ссылок у родителя
+        if (parent.left === node) parent.left = child; else parent.right = child;
+    } else { // если узла есть оба потомка, то находим минимальный узел в правом поддереве
+        const { parent: parentSuccessor, node: successor } = findMinNodeAndParent(node);
 
-        while (successor.left !== null) {
-            successorParent = successor;
-            successor = successor.left;
-        }
+        node.value = successor.value; // замещаем значение удаляемого узла значением преемника
 
-        if (successorParent !== current) {
-            successorParent.left = successor.right;
-            successor.right = current.right;
-        }
-
-        successor.left = current.left;
-
-        if (parent === null) return successor; // Удаляем корневой узел
-
-        if (parent.left === current) parent.left = successor; else parent.right = successor;
-
+        // обновляем ссылки у родителя преемника
+        if (parentSuccessor.left === successor) parentSuccessor.left = successor.right;
+        else parentSuccessor.right = successor.right;
     }
-
     return root;
 }
 
+// Основная функция для удаления узла по ключу
+function remove(root, key) {
+    const { parent, node } = findNodeAndParent(root, key);
+
+    if (!node) return root; // если узел с заданным ключом не найден
+
+    return removeNode(root, parent, node);
+}
+
+// function test() {
+//     var node1 = new Node(2, null, null);
+//     var node2 = new Node(3, node1, null);
+//     var node3 = new Node(1, null, node2);
+//     var node4 = new Node(6, null, null);
+//     var node5 = new Node(8, node4, null);
+//     var node6 = new Node(10, node5, null);
+//     var node7 = new Node(5, node3, node6);
+//     var newHead = remove(node7, 10);
+//     console.assert(newHead.value === 5);
+//     console.assert(newHead.right === node5);
+//     console.assert(newHead.right.value === 8);
+// }
+
+// Функция для подсчета размера дерева
+function sizeOfBST(root) {
+    if (!root) return 0;
+    return sizeOfBST(root.left) + sizeOfBST(root.right) + 1;
+}
+
+// Тестирование
 function test() {
-    var node1 = new Node(2, null, null);
-    var node2 = new Node(3, node1, null);
-    var node3 = new Node(1, null, node2);
-    var node4 = new Node(6, null, null);
-    var node5 = new Node(8, node4, null);
-    var node6 = new Node(10, node5, null);
-    var node7 = new Node(5, node3, node6);
-    var newHead = remove(node7, 10);
-    console.assert(newHead.value === 5);
-    console.assert(newHead.right === node5);
-    console.assert(newHead.right.value === 8);
+    // Создаем бинарное дерево поиска
+    const root = new Node(
+        41,
+        new Node(20, new Node(11), new Node(29, null, new Node(32))),
+        new Node(65, new Node(50), new Node(91, new Node(72), new Node(99))),
+    );
+
+    // Удаляем узел с ключом 41
+    const newRoot = remove(root, 41);
+
+    // Проверяем корректность размера дерева
+    const expectedSize = 9; // Ожидаемый размер дерева
+    const actualSize = sizeOfBST(newRoot); // Фактический размер дерева
+    if (expectedSize === actualSize) {
+        console.log('Size of BST matches with the answer, size:', actualSize);
+    } else {
+        console.log(
+            'Size of BST does not match with the answer, expected =',
+            expectedSize,
+            'actual is',
+            actualSize,
+        );
+    }
+
+    console.log(newRoot);
 }
 
 test();

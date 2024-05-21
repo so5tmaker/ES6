@@ -1,5 +1,5 @@
 /*
-https://contest.yandex.ru/contest/24810/run-report/114197029/
+https://contest.yandex.ru/contest/24810/run-report/114397095/
 
 -- ПРИНЦИП РАБОТЫ --
 Я реализовал сортировку по таблице результатов с помощью пирамидальной сортировки с кучей (англ. Heapsort).
@@ -36,28 +36,35 @@ process.stdin.on(END, solve);
 
 const readNumber = () => Number(_inputLines[_curLine++]);
 
+class Participant { // инкапсулирует данные участников и метод сравнения
+    constructor(username, tasks, penalty) {
+        this.username = username;
+        this.tasks = Number(tasks);
+        this.penalty = Number(penalty);
+    }
+
+    static compare(a, b) { // используется для сравнения участников на основе задач, штрафов и имен
+        if (a.tasks > b.tasks) return true;
+
+        if (a.tasks === b.tasks) {
+            if (a.penalty < b.penalty) return true;
+
+            if (a.penalty === b.penalty) return a.username < b.username;
+        }
+
+        return false;
+    }
+}
+
 const readStringArray = (size) => {
     const info = [];
 
-    for (let k = 0; k < size; k++) info.push(_inputLines[_curLine++].split(" "));
+    for (let k = 0; k < size; k++) info.push(_inputLines[_curLine++]);
 
     return info;
 }
 
-const compareParticipants = (participant, info, index) => {
-    const username = info[index][0];
-    const task = Number(info[index][1]);
-    const penalty = Number(info[index][2]);
-
-    const currentUsername = participant[0];
-    const currentTask = Number(participant[1]);
-    const currentPenalty = Number(participant[2]);
-
-    return (currentTask > task ||
-        (currentTask === task && currentPenalty < penalty) ||
-        (currentTask === task && currentPenalty === penalty && currentUsername < username));
-}
-
+// Функция для просеивания вниз в бинарной куче
 const siftDown = (heap, index) => {
     const left = 2 * index;
     const right = 2 * index + 1;
@@ -66,14 +73,15 @@ const siftDown = (heap, index) => {
     if (left >= heap.length) return;
 
     // right < heap.length проверяет, что есть оба дочерних узла heap[right] > heap[left]
-    const indexLargest = (right < heap.length && compareParticipants(heap[right], heap, left)) ? right : left;
+    const indexLargest = (right < heap.length && Participant.compare(heap[right], heap[left])) ? right : left;
 
-    if (compareParticipants(heap[indexLargest], heap, index)) {
+    if (Participant.compare(heap[indexLargest], heap[index])) {
         [heap[index], heap[indexLargest]] = [heap[indexLargest], heap[index]];
         siftDown(heap, indexLargest);
     }
 }
 
+// Функция для извлечения максимального элемента из кучи
 const popMax = (heap) => {
     const result = heap[1];
     heap[1] = heap[heap.length - 1];
@@ -83,21 +91,25 @@ const popMax = (heap) => {
     return result;
 }
 
+// Функция для просеивания вверх в бинарной куче
 const siftUp = (heap, index) => {
     if (index === 1) return;
 
     const parentIndex = Math.floor(index / 2);
-    if (compareParticipants(heap[index], heap, parentIndex)) {
+
+    if (Participant.compare(heap[index], heap[parentIndex])) {
         [heap[parentIndex], heap[index]] = [heap[index], heap[parentIndex]];
         siftUp(heap, parentIndex);
     }
 }
 
+// Функция для добавления элемента в кучу
 const heapAdd = (heap, key) => {
     heap.push(key);
     siftUp(heap, heap.length - 1);
 }
 
+// Функция для сортировки массива с использованием кучи
 const heapSort = (array) => {
     // Создадим пустую бинарную кучу.
     let heap = [null];
@@ -115,11 +127,20 @@ const heapSort = (array) => {
     return sortedArray;
 }
 
-const solve = () => {
+// Основная функция для чтения входных данных, сортировки участников и вывода результата
+function solve() {
     const length = readNumber();
     const info = readStringArray(length);
 
-    const sortedArray = heapSort(info);
+    const participants = info.map(line => {
+        const [username, tasks, penalty] = line.split(' ');
 
-    for (const row of sortedArray) console.log(row[0]);
+        return new Participant(username, tasks, penalty);
+    });
+
+    const sortedArray = heapSort(participants);
+
+    for (const participant of sortedArray) {
+        console.log(participant.username);
+    }
 }
