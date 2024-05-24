@@ -66,7 +66,6 @@ const readStringArray = (ribs) => {
     return list;
 }
 
-// Основная функция для чтения входных данных, сортировки участников и вывода результата
 function solve() {
     const [vertices, ribs] = readNumbers();
     const list = readStringArray(Number(ribs));
