@@ -46,17 +46,12 @@ _reader.on("close", solve);
 
 const readNumbers = () => _inputLines[_curLine++].split(' ').map(Number);
 
-const readStringArray = (vertices, ribs) => {
+const readEdges = (vertices, ribs) => {
     const list = Array.from({ length: vertices + 1 }, () => []);
 
     for (let i = 0; i < ribs; i++) {
         const [u, v] = _inputLines[_curLine++].split(' ').map(Number);
-        list[u].push(v);
-        list[v].push(u);
-    }
-
-    for (let i = 1; i <= vertices; i++) {
-        list[i].sort((a, b) => a - b);
+        list[u].push(v); // Добавляем только одно направление для ориентированного графа
     }
 
     return list;
@@ -64,34 +59,46 @@ const readStringArray = (vertices, ribs) => {
 
 function solve() {
     const [vertices, ribs] = readNumbers();
-    const outgoingEdges = readStringArray(vertices, ribs);
-    const startVertex = readNumbers()[0];
+    const outgoingEdges = readEdges(vertices, ribs);
     const color = new Array(vertices + 1).fill('white');
-    const result = [];
+    let order = [];
+    let stack = [];
 
-    function DFS(startVertex) {
-        const stack = [startVertex];
+    // Сортируем каждый список смежности, чтобы обработка соседей происходила в правильном порядке
+    for (let i = 1; i <= vertices; i++) {
+        outgoingEdges[i].sort((a, b) => a - b);
+    }
+
+    function DFS(v) {
+        stack.push(v);
 
         while (stack.length > 0) {
-            const v = stack.pop();
+            let u = stack[stack.length - 1];
 
-            if (color[v] === 'white') {
-                color[v] = 'gray';
-                result.push(v);
-
-                for (let i = outgoingEdges[v].length - 1; i >= 0; i--) {
-                    const w = outgoingEdges[v][i];
+            if (color[u] === 'white') {
+                color[u] = 'gray';
+                for (let i = outgoingEdges[u].length - 1; i >= 0; i--) {
+                    let w = outgoingEdges[u][i];
                     if (color[w] === 'white') {
                         stack.push(w);
                     }
                 }
-            } else if (color[v] === 'gray') {
-                color[v] = 'black';
+            } else if (color[u] === 'gray') {
+                color[u] = 'black';
+                order.push(u);
+                stack.pop();
+            } else {
+                stack.pop();
             }
         }
     }
 
-    DFS(startVertex);
+    for (let i = 1; i <= vertices; i++) {
+        if (color[i] === 'white') {
+            DFS(i);
+        }
+    }
 
-    console.log(result.join(' '));
+    order.reverse();
+    console.log(order.join(' '));
 }

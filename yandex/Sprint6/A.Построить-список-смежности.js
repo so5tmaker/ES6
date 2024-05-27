@@ -55,7 +55,7 @@ const readNumbers = () => _inputLines[_curLine++].split(' ');
 const readStringArray = (ribs) => {
     const list = [];
 
-    for (let k = 0; k < ribs; k++) {
+    for (let k = 0; k < ribs; k++) { // ориентированный граф
         const [u, v] = _inputLines[_curLine++].split(' ');
 
         if (list[u]) { list[u] = [...list[u], v]; continue; }
