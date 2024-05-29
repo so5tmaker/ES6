@@ -56,12 +56,17 @@ _reader.on("close", solve);
 
 const readNumbers = () => _inputLines[_curLine++].split(' ').map(Number);
 
-const readEdges = (vertices, ribs) => {
+const readStringArray = (vertices, ribs) => {
     const list = Array.from({ length: vertices + 1 }, () => []);
 
     for (let i = 0; i < ribs; i++) {
         const [u, v] = _inputLines[_curLine++].split(' ').map(Number);
-        list[u].push(v); // Добавляем только одно направление для ориентированного графа
+        list[u].push(v);
+        list[v].push(u);
+    }
+
+    for (let i = 1; i <= vertices; i++) {
+        list[i].sort((a, b) => a - b);
     }
 
     return list;
@@ -69,38 +74,60 @@ const readEdges = (vertices, ribs) => {
 
 function solve() {
     const [vertices, ribs] = readNumbers();
-    const outgoingEdges = readEdges(vertices, ribs);
-    const color = new Array(vertices + 1).fill('white');
-    let order = [];
+    const outgoingEdges = readStringArray(vertices, ribs);
+    const color = new Array(vertices + 1).fill(-1);
+    const result = [];
+    let quantity = 0;
 
-    // Функция для выполнения топологической сортировки для одной вершины
-    function topSort(v) {
-        color[v] = "gray";
-        for (let w of outgoingEdges[v]) {
-            if (color[w] === "white") {
-                topSort(w);
+    function DFS(v) {
+        const stack = [v];
+
+        while (stack.length > 0) {
+            const u = stack.pop();
+
+            if (color[u] === -1) {
+                color[u] = quantity; // Assign the current component number
+                result.push(u);
+
+                for (let i = outgoingEdges[u].length - 1; i >= 0; i--) {
+                    const w = outgoingEdges[u][i];
+                    if (color[w] === -1) {
+                        stack.push(w);
+                    }
+                }
             }
         }
-        color[v] = "black";
-        order.push(v); // Добавляем обработанную вершину в начало стека.
     }
 
-    for (let i = 1; i <= vertices; i++) { // Начинаем с 1, так как вершины нумеруются с 1 до n
-        if (color[i] === "white") {
-            topSort(i);
+    for (let i = 1; i <= vertices; i++) {
+        if (color[i] === -1) {
+            quantity++; // Increment component count
+            DFS(i);
         }
     }
 
-    // Выводим порядок обхода
-    console.log(order.join(' '));
+    // Sort and output connected components
+    result.sort((a, b) => {
+        if (color[a] === color[b]) {
+            return a - b; // Sort vertices within the same component
+        }
+        return color[a] - color[b]; // Sort components by their color
+    });
+
+    console.log(quantity);
+
+    let currentComponent = color[result[0]];
+    let currentVertices = '';
+
+    for (const vertex of result) {
+        if (color[vertex] === currentComponent) {
+            currentVertices += ` ${vertex}`;
+        } else {
+            console.log(currentVertices.trim());
+            currentComponent = color[vertex];
+            currentVertices = `${vertex}`;
+        }
+    }
+
+    if (currentVertices) console.log(currentVertices.trim());
 }
-/*
-Входной файл
-5 3
-3 2
-3 4
-2 5
-Вывод программы
-1 5 2 4 3
-Правильный ответ
-1 3 2 4 5 */
