@@ -6,7 +6,7 @@ https://contest.yandex.ru/contest/25070/run-report/114766649/
 В данном случае куча используется для хранения рёбер графа с приоритетом на основе их весов.
 
 -- ДОКАЗАТЕЛЬСТВО КОРРЕКТНОСТИ --
-Использование алгоритма Прима на очереди с приоритетами, что алгоритм корректно найдет максимальное остовное дерево, 
+Использование алгоритма Прима на очереди с приоритетами является основанием того, что алгоритм корректно найдет максимальное остовное дерево, 
 поскольку он последовательно добавляет наибольшие рёбра, поддерживая связность графа.
 
 -- ВРЕМЕННАЯ СЛОЖНОСТЬ --
@@ -29,7 +29,7 @@ const END = 'end';
 const LINE = 'line';
 
 const _inputLines = [];
-let curLine = 0;
+let _curLine = 0;
 
 // Установим callback на считывание строки - так мы получим
 // все строки из ввода в массиве _inputLines.
@@ -39,7 +39,7 @@ _reader.on(LINE, line => _inputLines.push(line));
 process.stdin.on(END, solve);
 
 function readNumbers() {
-    return _inputLines[curLine++].split(' ').map(Number);
+    return _inputLines[_curLine++].split(' ').map(Number);
 }
 
 const readStringArray = (vertices, ribs) => {
