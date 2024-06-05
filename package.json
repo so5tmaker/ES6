@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node yandex/Sprint6/Финал/B.Железные-дороги-2.js"
+    "start": "node yandex/Sprint7/C.Золотая-лихорадка.js"
   },
   "keywords": [],
   "author": "",
