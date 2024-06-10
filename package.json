@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node yandex/Sprint7/I.Сложное-поле-с-цветочками.js"
+    "start": "node yandex/Sprint7/K.Гороскопы.js"
   },
   "keywords": [],
   "author": "",
