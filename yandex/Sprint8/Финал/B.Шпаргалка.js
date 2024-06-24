@@ -1,4 +1,3 @@
-
 /*
 https://contest.yandex.ru/contest/26133/run-report/115387875/
 
