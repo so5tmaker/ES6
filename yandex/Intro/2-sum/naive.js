@@ -10,9 +10,9 @@ function twoSum(numbers, X) {
 }
 
 // Пример использования:
-const numbers = [2, 7, 11, 15];
-const X = 9;
-console.log(twoSum(numbers, X)); // Вывод: [2, 7]
+const numbers = [-1, -1, -9, -7, 3, -6];
+const X = 2;
+console.log(twoSum(numbers, X)); // Вывод: [-1, 3]
 
 /*
 Давайте рассмотрим пример, чтобы лучше понять, как работает алгоритм, и почему внутренний цикл начинается с i+1.
