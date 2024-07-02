@@ -7,7 +7,6 @@ const _reader = _readline.createInterface({
 });
 
 const _inputLines = [];
-let _curLine = 0;
 
 _reader.on('line', line => {
     _inputLines.push(line);
