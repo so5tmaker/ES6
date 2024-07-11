@@ -1,4 +1,4 @@
-function isPrime(n) {
+function isPrime0(n) {
     if (n === 1) return false;
 
     let i = 2;
@@ -9,6 +9,16 @@ function isPrime(n) {
     }
 
     return true;
+}
+
+function isPrime(n) {
+    for (let i = 2; i < n; i++) {
+        if (n % i === 0) return false;
+
+        i++;
+    }
+
+    return n > 1;
 }
 
 console.log(isPrime(11));

@@ -3,7 +3,7 @@ function eratosthenesEffective(n) {
 
     numbers[0] = numbers[1] = false;
 
-    for (let num = 2; num < n; num++) {
+    for (let num = 2; num * num <= n; num++) {
         if (numbers[num]) {
             for (let j = num * num; j <= n; j += num) {
                 numbers[j] = false;

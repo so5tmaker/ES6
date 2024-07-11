@@ -1,11 +1,23 @@
-function eratosthenes(n) {
-    const numbers = new Array(n + 1).fill(true);
+function get_least_primes_linear(n) {
+    let lp = new Array(n + 1).fill(0);
+    let primes = [];
 
-    numbers[0] = numbers[1] = false;
+    for (let i = 2; i <= n; i++) {
+        if (lp[i] == 0) {
+            lp[i] = i;
+            primes.push(i);
+        }
+        console.log(primes);
+        for (let j = 0; j < primes.length; j++) {
+            let x = primes[j] * i;
+            if (primes[j] > lp[i] || x > n) {
+                break;
+            }
+            lp[x] = primes[j];
+        }
+    }
 
-    for (let num = 2; num < n; num++)
-        if (numbers[num])
-            for (let j = 2 * num; j <= n; j += num) numbers[j] = false;
-
-    return numbers;
+    console.log([primes, lp]);
 }
+
+get_least_primes_linear(15);
