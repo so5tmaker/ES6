@@ -36,6 +36,28 @@ function movingAverageTwoPointers(timeSeries, K) {
 
 console.log(movingAverageTwoPointers([10, 20, 30, 40, 50, 60, 70, 80, 90, 100], 3));
 
+function movingAverageImproved(timeSeries, K) {
+    let result = []; // Пустой массив для хранения скользящих средних
+    let currentSum = 0;
+
+    // Вычисляем сумму для первого окна
+    for (let i = 0; i < K; i++) {
+        currentSum += timeSeries[i];
+    }
+    // Добавляем первое среднее значение в результат
+    result.push(currentSum / K);
+
+    // Обновляем сумму для последующих окон
+    for (let beginIndex = 0; beginIndex < timeSeries.length - K; beginIndex++) {
+        currentSum = currentSum - timeSeries[beginIndex] + timeSeries[beginIndex + K];
+        result.push(currentSum / K);
+    }
+
+    return result;
+}
+
+console.log(movingAverageImproved([0, 1, 2, 3, 4, 5, 6], 3));
+
 function slidingWindow(timeSeries, K) {
     let result = []; // Empty array.
     // Calculate the first value honestly and save the result.
