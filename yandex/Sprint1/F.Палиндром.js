@@ -23,7 +23,7 @@ function readArray() {
 
 const lowerCase = (letter) => letter.toLowerCase();
 
-function solve() {
+function solve1() {
     const text = readArray();
     const re = /[A-Za-z0-9]/g;
 
@@ -37,5 +37,30 @@ function solve() {
         answer += lowerCase(text[i]).search(re) > -1 ? lowerCase(text[i]) : '';
     }
 
-    console.log(answer === initial ? 'True' : "False");
+    console.log(answer === initial ? 'True' : 'False');
+}
+
+function solve() { // the solution from the video with two pointers
+    const text = readArray();
+    const re = /[A-Za-z0-9]/g;
+
+    let answer = true, right = text.length - 1, left = 0;
+
+    while (left < right) {
+        while (text[left].search(re) === -1) {
+            left++; continue;
+        }
+        while (text[right].search(re) === -1) {
+            right--; continue;
+        }
+
+        if (lowerCase(text[right]) !== lowerCase(text[left])) {
+            answer = false; break;
+        }
+
+        left++;
+        right--;
+    }
+
+    console.log(answer ? 'True' : 'False');
 }
