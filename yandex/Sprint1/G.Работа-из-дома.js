@@ -23,7 +23,7 @@ function readNumber() {
 }
 
 
-function solve() {
+function solve1() {
     let current = readNumber();
     let binary = '';
 
@@ -51,6 +51,20 @@ function solve() {
                 current -= Math.pow(2, power - 1 - i);
             }
         }
+    }
+
+    console.log(binary);
+}
+
+function solve() { // the solution from the video
+    const num = readNumber();
+    let binary = '', current = num;
+
+    if (!num) return console.log('0');
+
+    while (current) {
+        binary = current % 2 + binary;
+        current = Math.floor(current / 2);
     }
 
     console.log(binary);
