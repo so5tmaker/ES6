@@ -22,7 +22,7 @@ function readString() {
     return _inputLines[_curLine++];
 }
 
-function solve() {
+function solve1() {
     let first = readString();
     let second = readString();
     let prev = '0'; // Перенос
@@ -60,4 +60,25 @@ function solve() {
     }
 
     console.log(result);
+}
+
+function solve() { // the solution from the video
+    let first = readString();
+    let second = readString();
+    let carry = 0; // Перенос
+    let result = '';
+
+    if (first.length < second.length) [first, second] = [second, first];
+
+    second = '0'.repeat(first.length - second.length) + second;
+
+    for (let i = first.length - 1; i >= 0; i--) {
+        let current = Number(first[i]) + Number(second[i]) + carry;
+
+        if (current > 1) { current -= 2; carry = 1; } else carry = 0;
+
+        result = String(current) + result;
+    }
+
+    console.log(carry ? '1' + result : result);
 }
