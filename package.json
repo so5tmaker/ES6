@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w",
-    "start": "node yandex/Sprint1/G.Работа-из-дома.js"
+    "start": "node yandex/Sprint2/A.Мониторинг.js"
   },
   "keywords": [],
   "author": "",
