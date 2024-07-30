@@ -22,16 +22,6 @@ function readNumber() {
     return Number(_inputLines[_curLine++]);
 }
 
-function readStringArray(size) {
-    const commands = [];
-
-    for (let k = 0; k < size; k++) {
-        commands.push(_inputLines[_curLine++]);
-    }
-
-    return commands;
-}
-
 function readStringArrayTest() {
     const line = `get_max
 pop
