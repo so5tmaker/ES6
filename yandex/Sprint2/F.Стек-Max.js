@@ -63,8 +63,6 @@ class StackMax {
 }
 
 function solve() {
-    const quantity = readNumber();
-    // const commands = readStringArray(quantity);
     const commands = readStringArrayTest();
     const GET_MAX = 'get_max';
     const ERROR = 'error'
