@@ -29,12 +29,12 @@ class Node {
     }
 }
 
-function readStringArray(quantity, size) {
+function readStringArray(quantity) {
     let commands = '';
     const printCommands = ['size', 'get'];
     const errorCodes = ['error'];
 
-    const queue = new MyQueueSized(size);
+    const queue = new MyQueueSized();
 
     for (let k = 0; k < quantity; k++) {
         const [command, value] = _inputLines[_curLine++].split(' ');
@@ -48,46 +48,61 @@ function readStringArray(quantity, size) {
 }
 
 class MyQueueSized {
-    constructor(n) {
-        this.queue = null;
+    constructor() {
         this.head = null;
         this.tail = null;
-        this.max_n = n;
-        this.queue_size = 0;
+        this.queueSize = 0;
     }
 
-    is_empty() {
-        return this.size() === 0;
+    isEmpty() {
+        return this.queueSize === 0;
     }
 
-    put(x) {
-        const newNode = new Node(x);
-        this.tail = this.is_empty() ? new Node(x) : new Node(x, this.queue);
-        this.queue = this.is_empty() ? new Node(x) : new Node(x, this.queue);
-        this.queue_size += 1;
+    print(node) {
+        let current = node;
+        let result = '';
+        while (current) {
+            result += current.value ? current.value + '->' : '';
+            current = current.next;
+        }
+        console.log(result + 'null')
+    }
+
+    put(value) {
+        const newNode = new Node(value);
+
+        if (this.isEmpty()) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            this.tail.next = newNode;
+            // this.print(this.tail);
+            this.tail = newNode;
+            // this.print(this.tail);
+        }
+
+        this.queueSize++;
     }
 
     get() {
-        if (this.is_empty()) return 'error';
+        if (this.isEmpty()) return 'error';
 
-        const x = this.head.value;
+        const value = this.head.value;
 
-        this.queue = this.head.next;
         this.head = this.head.next;
-        this.queue_size -= 1;
+        this.queueSize--;
 
-        return x;
+        return value;
     }
 
     size() {
-        return this.queue_size;
+        return this.queueSize;
     }
 }
 
 function solve() {
     const quantity = readNumber();
-    const size = readNumber();
-    const result = readStringArray(quantity, size);
+    const result = readStringArray(quantity);
 
     console.log(result);
 }
