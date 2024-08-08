@@ -14,14 +14,24 @@ Explanation:
 */
 
 /**
-* @param {stringll} ops -List of operations
+* @param {string} ops -List of operations
 * @return {number}.-Sum of scores after-performing-all operations
 */
 var callPoints = function (ops) {
-    var result = null;
+    const operations = ['C', 'D', '+'];
+    const stack = [];
 
+    for (let i = 0; i < ops.length; i++) {
+        if (operations.includes(ops[i])) {
+            if (ops[i] === 'C') stack.pop();
+            if (ops[i] === 'D') { const prev = stack[stack.length - 1]; stack.push(Number(prev) * 2); }
+            if (ops[i] === '+') { const [first, second] = stack; stack.push(Number(first) + Number(second)); }
+        } else {
+            stack.push(Number(ops[i]));
+        }
+    }
 
-    return result;
+    return stack.reduce((a, b) => a + b, 0);
 }
 
 
