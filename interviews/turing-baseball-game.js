@@ -25,7 +25,7 @@ var callPoints = function (ops) {
         if (operations.includes(ops[i])) {
             if (ops[i] === 'C') stack.pop();
             if (ops[i] === 'D') { const prev = stack[stack.length - 1]; stack.push(Number(prev) * 2); }
-            if (ops[i] === '+') { const [first, second] = stack; stack.push(Number(first) + Number(second)); }
+            if (ops[i] === '+') { const [first, second] = [stack[stack.length - 2], stack[stack.length - 1]]; stack.push(Number(first) + Number(second)); }
         } else {
             stack.push(Number(ops[i]));
         }
