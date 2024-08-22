@@ -76,9 +76,7 @@ class MyQueueSized {
             this.tail = newNode;
         } else {
             this.tail.next = newNode;
-            // this.print(this.tail);
             this.tail = newNode;
-            // this.print(this.tail);
         }
 
         this.queueSize++;
