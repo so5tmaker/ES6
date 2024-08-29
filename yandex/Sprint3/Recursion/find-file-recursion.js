@@ -5,6 +5,7 @@ function findFile(folder, fileToFind) {
     const files = fs.readdirSync(folder);
     for (const file of files) {
         const filePath = path.join(folder, file);
+        console.log(`filePath with index ${files.indexOf(file)}: ${filePath}`);
         if (fs.statSync(filePath).isDirectory()) {
             const found = findFile(filePath, fileToFind);
 
