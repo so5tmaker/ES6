@@ -25,23 +25,17 @@ function readArrayNumber() {
 
 function solve() {
     const [n, k] = readArrayNumber();
-    const prices = readArrayNumber();
-    const result = [];
+    const prices = readArrayNumber().sort((a, b) => a - b);
 
-    for (let i = 0; i < length; i++) {
-        for (let j = 0; j < length; j++) {
-            if (numbers[j] > numbers[j + 1]) {
-                const temp = numbers[j];
-                numbers[j] = numbers[j + 1];
-                numbers[j + 1] = temp;
-            }
-        }
+    let sum = 0, i = 0;
 
-        const join = numbers.join(' ');
+    while (i < n) {
+        sum += prices[i];
 
-        if (!result.includes(join)) {
-            result.push(join);
-            console.log(join);
-        };
+        if (sum > k) break;
+
+        i++;
     }
+
+    console.log(i);
 }
