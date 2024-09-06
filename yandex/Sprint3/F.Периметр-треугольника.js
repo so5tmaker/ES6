@@ -16,6 +16,10 @@ _reader.on('line', line => {
 // Когда ввод закончится, будет вызвана функция solve.
 process.stdin.on('end', solve);
 
+function readNumber() {
+    return Number(_inputLines[_curLine++]);
+}
+
 // Функция парсит число из очередной строки массива _inputLines
 // и сдвигает указатель на единицу вперёд.
 function readArrayNumber() {
@@ -23,18 +27,21 @@ function readArrayNumber() {
 }
 
 function solve() {
-    const [n, k] = readArrayNumber();
-    const prices = readArrayNumber().sort((a, b) => a - b); // возрастание должно быть asc
+    const n = readNumber();
+    const sides = readArrayNumber().sort((a, b) => b - a); // убывание должно быть desc
 
-    let sum = 0, i = 0;
+    let perimeter = 0, sum = 0, i = 0;
 
-    while (i < n) {
-        sum += prices[i];
+    while (i < n - 1) {
+        sum = sides[i + 1] + sides[i + 2];
 
-        if (sum > k) break;
+        if (sum > sides[i]) {
+            perimeter = sum + sides[i];
+            break;
+        };
 
         i++;
     }
 
-    console.log(i);
+    console.log(perimeter);
 }
