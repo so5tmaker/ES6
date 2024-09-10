@@ -28,7 +28,7 @@ function readArrayNumber() {
 
 function solve() {
     const n = readNumber();
-    const sides = readArrayNumber().sort((a, b) => b - a); // убывание должно быть desc
+    const k = readArrayNumber().sort((a, b) => b - a); // убывание должно быть desc
 
     console.log();
 }
