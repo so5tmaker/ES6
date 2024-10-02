@@ -22,13 +22,26 @@ function readNumber() {
 
 // Функция парсит число из очередной строки массива _inputLines
 // и сдвигает указатель на единицу вперёд.
-function readArrayNumber() {
-    return _inputLines[_curLine++].split(' ').map(i => Number(i));
+function readArray() {
+    return _inputLines[_curLine++].split(' ');
 }
+
+const getString = (str, color) => (str === '' ? '' : ' ') + color;
+const getSpace = (str) => (str === '' ? '' : str + ' ');
 
 function solve() {
     const n = readNumber();
-    const k = readArrayNumber().sort((a, b) => b - a); // убывание должно быть desc
+    const colors = readArray();
 
-    console.log();
+    let string0 = '', string1 = '', string2 = '';
+
+    for (let i = 0; i < n; i++) {
+        const color = colors[i];
+
+        if (color === '0') string0 += getString(string0, color);
+        if (color === '1') string1 += getString(string1, color);
+        if (color === '2') string2 += getString(string2, color);
+    }
+
+    console.log(`${getSpace(string0)}${getSpace(string1)}${getSpace(string2)}`);
 }
