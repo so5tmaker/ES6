@@ -28,7 +28,8 @@ function readArrayNumber() {
 
 function solve() {
     const n = readNumber();
-    const k = readArrayNumber().sort((a, b) => b - a); // убывание должно быть desc
+    const ids = readArrayNumber().sort((a, b) => a - b); // убывание должно быть asc
+    const k = readNumber();
 
     console.log();
 }
