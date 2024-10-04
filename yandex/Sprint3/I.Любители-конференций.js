@@ -31,5 +31,7 @@ function solve() {
     const ids = readArrayNumber().sort((a, b) => a - b); // убывание должно быть asc
     const k = readNumber();
 
+    const universities = Array(k).fill(0);
+
     console.log();
 }
