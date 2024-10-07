@@ -28,10 +28,22 @@ function readArrayNumber() {
 
 function solve() {
     const n = readNumber();
-    const ids = readArrayNumber().sort((a, b) => a - b); // убывание должно быть asc
+    const ids = readArrayNumber().sort((a, b) => a - b); // возрастание, должно быть asc
     const k = readNumber();
 
-    const universities = Array(k).fill(0);
+    const universities = {};
 
-    console.log();
+    for (let i = 0; i < n; i++) {
+        universities[ids[i]] = universities[ids[i]] ? universities[ids[i]] + 1 : 1;
+    }
+
+    const sorted = Object.entries(universities).sort((a, b) => b[1] - a[1]); // по убыванию (desc)
+
+    // Фильтрация и вывод только первых k университетов
+    console.log(
+        sorted
+            .slice(0, k)  // Возьмем первые k элементов
+            .map(entry => entry[0])  // Получим ключи (университеты)
+            .join(' ')  // Выведем их через пробел
+    );
 }
