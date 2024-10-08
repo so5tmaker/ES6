@@ -9,4 +9,4 @@ function as_binary_string(n) {
     return as_binary_string(Math.floor(n / 2)) + last_digit.toString();
 }
 
-as_binary_string(12);
+console.log(as_binary_string(12));
