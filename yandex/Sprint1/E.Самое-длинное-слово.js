@@ -30,7 +30,7 @@ function solve() {
     const textLength = readNumber();
     const text = readArray();
 
-    const [answer] = text.trim().split(' ').sort((a, b) => b.length - a.length);
+    const [answer] = text.trim().split(' ').sort((a, b) => b.length - a.length); // по убыванию (desc)
 
     console.log(answer);
     console.log(answer.length);
