@@ -28,7 +28,9 @@ function readArrayNumber() {
 
 function solve() {
     const n = readNumber();
-    const k = readArrayNumber().sort((a, b) => b - a); // убывание должно быть desc
+    const m = readNumber();
+    const northPopulation = readArrayNumber();
+    const southPopulation = readArrayNumber();
 
     console.log();
 }
