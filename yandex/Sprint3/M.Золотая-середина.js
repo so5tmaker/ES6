@@ -26,11 +26,18 @@ function readArrayNumber() {
     return _inputLines[_curLine++].split(' ').map(i => Number(i));
 }
 
+const getMedian = (population, length) => (population[length / 2 - 1] + population[length / 2]) / 2;
+
+
 function solve() {
     const n = readNumber();
     const m = readNumber();
     const northPopulation = readArrayNumber();
     const southPopulation = readArrayNumber();
 
-    console.log();
+    const length = n + m;
+    const population = [...northPopulation, ...southPopulation].sort((a, b) => a - b);
+
+    console.log(length % 2 === 0 ? getMedian(population, length) : population[(length - 1) / 2]);
 }
+
