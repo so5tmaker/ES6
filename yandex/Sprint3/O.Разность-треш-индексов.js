@@ -41,8 +41,19 @@ function readArrayNumber() {
 
 function solve() {
     const islands = readNumber();
-    const squares = readArrayNumber().sort((a, b) => b - a); // убывание должно быть desc
+    const squares = readArrayNumber();
     const k = readNumber();
+    const diffs = [];
 
-    console.log();
+    const last = Math.abs(squares[0] - squares[islands - 1]);
+
+    if (islands === 2) { console.log(last); return; }
+
+    for (let i = 0; i < islands - 1; i++) {
+        diffs.push(Math.abs(squares[i] - squares[i + 1]));
+    }
+
+    diffs.push(last);
+
+    console.log(diffs.sort((a, b) => a - b)[k - 1]); // возрастание должно быть asc
 }
