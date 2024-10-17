@@ -45,15 +45,16 @@ function solve() {
     const k = readNumber();
     const diffs = [];
 
-    const last = Math.abs(squares[0] - squares[islands - 1]);
-
-    if (islands === 2) { console.log(last); return; }
-
-    for (let i = 0; i < islands - 1; i++) {
-        diffs.push(Math.abs(squares[i] - squares[i + 1]));
+    // Вычисляем разницы для всех пар островов
+    for (let i = 0; i < islands; i++) {
+        for (let j = i + 1; j < islands; j++) {
+            diffs.push(Math.abs(squares[i] - squares[j]));
+        }
     }
 
-    diffs.push(last);
+    // Сортируем разницы и выводим k-ю по порядку, возрастание должно быть asc
+    diffs.sort((a, b) => a - b);
 
-    console.log(diffs.sort((a, b) => a - b)[k - 1]); // возрастание должно быть asc
+    // Выводим k-ю минимальную разницу (k - 1, так как индексация начинается с 0)
+    console.log(diffs[k - 1]);
 }
