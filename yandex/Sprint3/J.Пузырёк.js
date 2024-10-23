@@ -35,9 +35,8 @@ function solve() {
     for (let i = 0; i < length; i++) {
         for (let j = 0; j < length; j++) {
             if (numbers[j] > numbers[j + 1]) {
-                const temp = numbers[j];
-                numbers[j] = numbers[j + 1];
-                numbers[j + 1] = temp;
+                // Swap the found minimum element with the first element
+                [numbers[j], numbers[j + 1]] = [numbers[j + 1], numbers[j]];
             }
         }
 
