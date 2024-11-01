@@ -35,8 +35,35 @@ reader.on(CLOSE, solve);
 // функция для чтения строк из входных данных
 const readNumber = () => Number(inputLines[curLine++]);
 
+function eratosthenesEffective(n) {
+    const numbers = new Array(n + 1).fill(true);
+
+    numbers[0] = numbers[1] = false;
+
+    for (let num = 2; num * num <= n; num++) {
+        if (numbers[num]) {
+            for (let j = num * num; j <= n; j += num) {
+                numbers[j] = false;
+            }
+        }
+    }
+
+    return numbers;
+}
+
 function solve() {
     let n = readNumber();
 
-    console.log(n);
+    const primes = eratosthenesEffective(n);
+    const primeNumbers = primes.map((isPrime, i) => isPrime ? i : isPrime).filter(p => p);
+    const factors = [];
+
+    // set an empty array of factors
+    // assign n as an initial value of remaining variable
+    // iterate prime numbers
+    // check while remaining has not remainder from division: remaining % prime
+    // add prime in factors array and divide remaining by prime
+    // after while check that remaining equals 1, if yes break
+
+    console.log(factors);
 }
