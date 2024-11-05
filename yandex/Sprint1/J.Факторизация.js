@@ -51,19 +51,45 @@ function eratosthenesEffective(n) {
     return numbers;
 }
 
-function solve() {
+function solveEratosthenes() {
     let n = readNumber();
 
     const primes = eratosthenesEffective(n);
     const primeNumbers = primes.map((isPrime, i) => isPrime ? i : isPrime).filter(p => p);
-    const factors = [];
 
     // set an empty array of factors
+    const factors = [];
     // assign n as an initial value of remaining variable
+    let remaining = n;
     // iterate prime numbers
-    // check while remaining has not remainder from division: remaining % prime
-    // add prime in factors array and divide remaining by prime
-    // after while check that remaining equals 1, if yes break
+    for (const prime of primeNumbers) {
+        // check while remaining has not remainder from division: remaining % prime
+        while (remaining % prime === 0) {
+            // add prime in factors array and divide remaining by prime
+            factors.push(prime);
+            remaining /= prime;
+        }
+        // after while check that remaining equals 1, if yes break
+        if (remaining === 1) break;
+    }
 
-    console.log(factors);
+    console.log(factors.join(' '));
+}
+
+function solve() {
+    let number = readNumber();
+    const factors = [];
+    let divisor = 2;
+
+    while (number >= divisor * divisor) {
+        while (number % divisor === 0) {
+            factors.push(divisor);
+            number /= divisor;
+        }
+        divisor++;
+    }
+
+    if (number > 1) factors.push(number); // Последний множитель, если остался
+
+    console.log(factors.join(' '));
 }
