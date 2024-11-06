@@ -42,22 +42,24 @@ function mergeSort(array) {
     return result;
 }
 
-class Animal {
-    constructor(name) {
-        this.name = name;
-    }
+console.log('1');
 
-    speak() {
-        console.log(`${this.name} makes a noise.`);
-    }
-}
+setTimeout(function () {
+    console.log('2');
+    Promise.resolve().then(function () {
+        console.log('3');
+    }, 0);
+}, 0);
 
-class Dog extends Animal {
-    speak() {
-        super.speak();
-        console.log(`${this.name} barks.`);
-    }
-}
+Promise.resolve().then(function () {
+    console.log('4');
+    setTimeout(function () {
+        console.log('5');
+    }, 0);
+});
 
-let dog = new Dog("Rex");
-dog.speak();
+requestAnimationFrame(function () {
+    console.log('7');
+});
+
+console.log('6');
