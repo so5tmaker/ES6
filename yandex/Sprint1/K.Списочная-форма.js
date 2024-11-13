@@ -19,13 +19,27 @@ reader.on(CLOSE, solve);
 // функция для чтения строк из входных данных
 const readNumber = () => Number(inputLines[curLine++]);
 
-const getNumber = () => Number(inputLines[curLine++].split(' ').join(''));
+const getNumber = () => inputLines[curLine++].split(' ').map(Number);
 
 function solve() {
-    const number = readNumber();
+    const n = readNumber();
     const x = getNumber();
-    const k = readNumber();
+    let k = readNumber();
 
+    let carry = k;
+    let i = x.length - 1;
 
-    console.log(`${x + k}`.split('').join(' '));
+    while (carry > 0 || i >= 0) {
+        if (i >= 0) {
+            let sum = x[i] + (carry % 10);
+            x[i] = sum % 10;
+            carry = Math.floor(carry / 10) + Math.floor(sum / 10);
+            i--;
+        } else {
+            x.unshift(carry % 10);
+            carry = Math.floor(carry / 10);
+        }
+    }
+
+    console.log(x.join(' '));
 }
