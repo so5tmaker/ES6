@@ -27,8 +27,11 @@ const readNumber = () => Number(inputLines[curLine++]);
 const getNumber = () => inputLines[curLine++].split(' ').map(Number);
 
 function solve() {
-    const n = readNumber();
-    const x = getNumber();
+    const s = readNumber();
+    const t = getNumber();
+
+    // sort both string t
+    // return the last symbol of t
 
     console.log(n);
     console.log(x);
