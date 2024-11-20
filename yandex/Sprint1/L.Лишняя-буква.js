@@ -31,7 +31,9 @@ function solve() {
     const t = getNumber();
 
     // sort both string t
-    // return the last symbol of t
+    // loop trough s compare both symbols s and t
+    // if did not find extra character return the last
+    // return the symbol of t
 
     console.log(n);
     console.log(x);
