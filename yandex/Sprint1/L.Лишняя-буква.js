@@ -27,14 +27,20 @@ const readNumber = () => Number(inputLines[curLine++]);
 const getNumber = () => inputLines[curLine++].split(' ').map(Number);
 
 function solve() {
-    const s = readNumber();
+    const s = getNumber();
     const t = getNumber();
 
     // sort both string t
+    s.sort();
+    t.sort();
     // loop trough s compare both symbols s and t
+    for (let i = 0; i < s.length; i++) {
+        // return the symbol of t
+        if (s[i] !== t[i]) {
+            console.log(t[i]);
+            return;
+        }
+    }
     // if did not find extra character return the last
-    // return the symbol of t
-
-    console.log(n);
-    console.log(x);
+    console.log(t[t.length - 1]);
 }
