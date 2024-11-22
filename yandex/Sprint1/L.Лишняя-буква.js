@@ -21,14 +21,11 @@ let curLine = 0;
 reader.on(LINE, line => inputLines.push(line));
 reader.on(CLOSE, solve);
 
-// функция для чтения строк из входных данных
-const readNumber = () => Number(inputLines[curLine++]);
-
-const getNumber = () => inputLines[curLine++].split(' ').map(Number);
+const getStrings = () => inputLines[curLine++].split('');
 
 function solve() {
-    const s = getNumber();
-    const t = getNumber();
+    const s = getStrings();
+    const t = getStrings();
 
     // sort both string t
     s.sort();
